@@ -1,0 +1,2536 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вопросы и ответы по HTML, CSS, JS и PHP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+        .qa-item {
+            margin-bottom: 10px;
+        }
+        .question {
+            background-color: #f0f0f0;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .answer {
+            display: none;
+            padding: 10px;
+            border-left: 2px solid #ffffff;
+            margin-left: 20px;
+    cursor: pointer; /* Указатель мыши как при кликабельности */
+    width: 100%; /* Занимает всю ширину контейнера */
+    box-sizing: border-box; /* Учитывает padding в ширине */
+}
+
+.answer:hover {
+    background-color: #f5f5f5; /* Легкий фон при наведении */
+}
+        .question:hover {
+            background-color: #e0e0e0;
+        }
+        .qa-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    resize: both;
+    overflow: auto;
+    z-index: 10000;
+}
+
+.qa-header {
+    background-color: #fefeff;
+    color: white;
+    padding: 5px 10px;
+    cursor: move;
+    user-select: none;
+}
+
+.search-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#searchInput {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#qaList {
+    width: 100%;
+    height: calc(100% - 70px);
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 0 10px 10px 10px;
+}
+
+.qa-item {
+    width: 100%;
+}
+
+.question, .answer {
+    word-wrap: break-word;
+}
+
+/* Стили для модального окна */
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    display: none; /* Изначально скрыто */
+    z-index: 10001; /* Поверх основного блока */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 10px;
+    margin: 20px auto; /* Центрирование */
+    position: relative;
+    width: calc(100% - 40px); /* Учитываем отступы */
+    box-sizing: border-box;
+    border-radius: 5px;
+    max-height: calc(100% - 40px); /* Ограничение высоты */
+    overflow-y: auto; /* Скролл, если контент не помещается */
+}
+
+.modal-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.modal-close:hover {
+    background-color: #cc0000;
+}
+
+#modalAnswer {
+    margin-top: 30px; /* Отступ от кнопки */
+    word-wrap: break-word;
+}
+    </style>
+</head>
+<body>
+    <h1>Управление самолетом</h1>
+    <script src="1.js"></script>
+    <form id="planeForm">
+      <label>Марка: 
+        <input type="text" id="brand" name="brand">
+      </label><br>
+      <label>Вместительность (пассажиров): 
+      <input type="number" name="capacity">
+    </label><br>
+      <label>Мощность (л.с.): 
+        <input type="number" name="power">
+      </label><br>
+      <label>Скорость (км/ч): 
+        <input type="number" name="speed">
+      </label><br>
+      <label>Количество двигателей: 
+        <input type="number" name="engines">
+      </label><br>
+      <label>Высота полёта (м): 
+        <input type="number" name="flightAltitude">
+      </label><br>
+      <button type="button" onclick="savePlane()">Сохранить</button>
+  </form>
+  <div class="qa-container" id="qaContainer">
+    <div class="qa-header" id="qaHeader">Вопросы и ответы</div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Поиск по вопросам...">
+    </div>
+    <div id="qaList">
+        <div class="qa-item">
+            <div class="question">Описать структуру НТML-документа, теги и их атрибуты. Семантическая разметка HTML-документа</div>
+            <div class="answer">
+                <p><strong>HTML-документ</strong> состоит из тега <code>&lt;!DOCTYPE html&gt;</code>, корневого элемента <code>&lt;html&gt;</code>, который включает:</p>
+                
+                <ul>
+                    <li><code>&lt;head&gt;</code> — метаданные</li>
+                    <li><code>&lt;body&gt;</code> — контент</li>
+                </ul>
+            
+                <p><strong>Теги</strong> — это элементы разметки (например, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;img&gt;</code>).</p>
+            
+                <p><strong>Атрибуты</strong> уточняют их свойства, например:</p>
+                <ul>
+                    <li><code>href</code> в <code>&lt;a&gt;</code> указывает ссылку</li>
+                    <li><code>src</code> в <code>&lt;img&gt;</code> — путь к изображению</li>
+                </ul>
+            
+                <p><strong>Семантическая разметка</strong> использует осмысленные теги (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>) для улучшения структуры и доступности контента.</p>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать форматирование текста, изменение шрифта, заголовки, списки в HTML</div>
+            <div class="answer">
+                <p><strong>Форматирование текста в HTML</strong> включает:</p>
+            
+                <ul>
+                    <li><strong>Жирный:</strong> <code>&lt;strong&gt;</code></li>
+                    <li><em>Курсив:</em> <code>&lt;em&gt;</code></li>
+                    <li><u>Подчеркнутый:</u> <code>&lt;u&gt;</code></li>
+                    <li><s>Зачеркнутый:</s> <code>&lt;s&gt;</code></li>
+                    <li><mark>Выделенный:</mark> <code>&lt;mark&gt;</code></li>
+                    <li>Цитаты: <code>&lt;blockquote&gt;</code>, <code>&lt;q&gt;</code></li>
+                    <li>Код: <code>&lt;code&gt;</code></li>
+                </ul>
+            
+                <p><strong>Изменение шрифта</strong> выполняется через CSS с помощью свойств:</p>
+                <ul>
+                    <li><code>font-family</code></li>
+                    <li><code>color</code></li>
+                    <li><code>font-size</code></li>
+                </ul>
+            
+                <p><strong>Заголовки</strong> обозначаются тегами <code>&lt;h1&gt;</code> – <code>&lt;h6&gt;</code>, где <code>&lt;h1&gt;</code> — самый важный.</p>
+            
+                <p><strong>Списки</strong> бывают:</p>
+                <ul>
+                    <li>Нумерованные: <code>&lt;ol&gt;</code></li>
+                    <li>Маркированные: <code>&lt;ul&gt;</code></li>
+                    <li>Вложенные: комбинированное использование <code>&lt;ol&gt;</code> и <code>&lt;ul&gt;</code></li>
+                </ul>
+            </div>
+            </div>
+        <div class="qa-item">
+            <div class="question">Описать вставку рисунков и таблиц на HTML-страницу. Внедрение аудио и видео контента в HTML-документ</div>
+            <div class="answer">
+                <p><strong>Добавление изображений</strong></p>
+                <ul>
+                    <li>Используется тег <code>&lt;img&gt;</code></li>
+                    <li><code>src</code> — путь к файлу</li>
+                    <li><code>alt</code> — альтернативный текст</li>
+                    <li><code>width</code> и <code>height</code> — задают размеры</li>
+                </ul>
+            
+                <p><strong>Создание таблиц</strong></p>
+                <ul>
+                    <li><code>&lt;table&gt;</code> — создание таблицы</li>
+                    <li><code>&lt;tr&gt;</code> — строка</li>
+                    <li><code>&lt;td&gt;</code> — ячейка</li>
+                    <li><code>&lt;th&gt;</code> — заголовок</li>
+                    <li><code>border</code> — добавляет рамку</li>
+                </ul>
+            
+                <p><strong>Встраивание аудио</strong></p>
+                <ul>
+                    <li>Используется тег <code>&lt;audio&gt;</code></li>
+                    <li><code>src</code> — путь к аудиофайлу</li>
+                    <li><code>controls</code> — добавляет элементы управления</li>
+                    <li>Форматы указываются в <code>&lt;source&gt;</code></li>
+                </ul>
+            
+                <p><strong>Добавление видео</strong></p>
+                <ul>
+                    <li>Используется тег <code>&lt;video&gt;</code></li>
+                    <li><code>src</code> — путь к видеофайлу</li>
+                    <li><code>controls</code> — элементы управления</li>
+                    <li><code>width</code> и <code>height</code> — размеры</li>
+                    <li>Альтернативные форматы указываются в <code>&lt;source&gt;</code></li>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать формы HTML. Способы передачи данных на сервер, описать их</div>
+            <div class="answer">
+                <p><strong>Создание форм</strong></p>
+                <p>Формы создаются с помощью тега <code>&lt;form&gt;</code> с атрибутами:</p>
+                <ul>
+                    <li><code>action</code> — адрес сервера, куда отправляются данные</li>
+                    <li><code>method</code> — способ отправки данных (<code>GET</code> или <code>POST</code>)</li>
+                </ul>
+            
+                <p><strong>Основные элементы формы</strong></p>
+                <ul>
+                    <li><code>&lt;input&gt;</code> — поле ввода для:
+                        <ul>
+                            <li>текста (<code>type="text"</code>)</li>
+                            <li>паролей (<code>type="password"</code>)</li>
+                            <li>кнопок (<code>type="button"</code>, <code>type="submit"</code>)</li>
+                            <li>чекбоксов (<code>type="checkbox"</code>)</li>
+                            <li>радиокнопок (<code>type="radio"</code>)</li>
+                        </ul>
+                    </li>
+                    <li><code>&lt;select&gt;</code> — выпадающий список</li>
+                </ul>
+            
+                <p>Каждый элемент формы имеет атрибут <code>name</code> для идентификации передаваемых данных.</p>
+            
+                <p><strong>Способы передачи данных</strong></p>
+                <ul>
+                    <li><strong>GET</strong> — данные передаются через строку URL:
+                        <ul>
+                            <li>Подходит для простых запросов (например, поиск)</li>
+                            <li>Ограничен по объему</li>
+                            <li>Данные видны в адресной строке</li>
+                        </ul>
+                    </li>
+                    <li><strong>POST</strong> — данные отправляются в теле запроса:
+                        <ul>
+                            <li>Безопаснее, чем GET</li>
+                            <li>Подходит для конфиденциальных данных</li>
+                            <li>Используется для отправки больших объемов информации, включая файлы</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать элементы формы HTML, назначение и виды</div>
+            <div class="answer">
+                <p><strong>Основные элементы ввода в HTML</strong></p>
+            
+                <ul>
+                    <li><code>&lt;input&gt;</code> — универсальный элемент для ввода данных. Поддерживает различные <strong>типы</strong>:
+                        <ul>
+                            <li><code>text</code> — текстовое поле</li>
+                            <li><code>password</code> — ввод пароля</li>
+                            <li><code>submit</code> — кнопка отправки</li>
+                            <li><code>checkbox</code> — флажок (много вариантов)</li>
+                            <li><code>radio</code> — переключатель (один вариант)</li>
+                            <li><code>file</code> — загрузка файлов</li>
+                            <li><code>email</code> — ввод email-адреса</li>
+                            <li><code>number</code> — ввод чисел</li>
+                            <li><code>date</code> — выбор даты</li>
+                        </ul>
+                    </li>
+            
+                    <li><code>&lt;textarea&gt;</code> — поле для ввода многострочного текста.</li>
+            
+                    <li><code>&lt;select&gt;</code> и <code>&lt;option&gt;</code> — выпадающий список для выбора одного или нескольких вариантов.</li>
+            
+                    <li><code>&lt;button&gt;</code> — кнопка. Основные <strong>типы</strong>:
+                        <ul>
+                            <li><code>submit</code> — отправляет форму</li>
+                            <li><code>button</code> — используется для скриптов</li>
+                        </ul>
+                    </li>
+            
+                    <li><code>&lt;label&gt;</code> — подпись к элементу формы, улучшает доступность и удобство использования.</li>
+            
+                    <li><code>&lt;fieldset&gt;</code> и <code>&lt;legend&gt;</code> — группировка элементов формы с заголовком.</li>
+                </ul>
+            
+                <p><strong>Назначение</strong>: Эти элементы собирают данные от пользователя и передают их на сервер через форму <code>&lt;form&gt;</code>.</p>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Определить назначение каскадных таблиц стилей (CSS)</div>
+            <div class="answer">
+                <p><strong>Каскадные таблицы стилей (CSS)</strong> предназначены для оформления и стилизации веб-страниц, созданных на HTML.</p>
+            
+                <p><strong>CSS управляет:</strong></p>
+                <ul>
+                    <li>Цветами</li>
+                    <li>Шрифтами</li>
+                    <li>Размером и расположением элементов</li>
+                    <li>Добавлением эффектов и анимаций</li>
+                </ul>
+            
+                <p>Использование CSS позволяет <strong>отделить дизайн от структуры</strong> документа, что упрощает его поддержку и изменение.</p>
+            
+                <p><strong>Что значит "каскадность"?</strong></p>
+                <p>CSS использует систему <strong>приоритета и наследования</strong>, которая позволяет управлять стилями гибко и эффективно.</p>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать синтаксис CSS</div>
+            <div class="answer">
+                <p><strong>Синтаксис CSS</strong> состоит из селектора и блока объявлений в фигурных скобках <code>{}</code>.</p>
+            
+                <p><strong>Структура CSS-правила:</strong></p>
+                <ul>
+                    <li><strong>Селектор</strong> — определяет, к каким элементам применяются стили:
+                        <ul>
+                            <li>Теги (например, <code>p</code>)</li>
+                            <li>Классы (через <code>.</code>, например, <code>.classname</code>)</li>
+                            <li>ID (через <code>#</code>, например, <code>#idname</code>)</li>
+                            <li>Комбинации селекторов (например, <code>div p</code>)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Блок объявлений</strong> — содержит стили, записанные в виде пар <code>"свойство: значение"</code>, разделенных двоеточием <code>:</code> и заканчивающихся точкой с запятой <code>;</code>.</li>
+                </ul>
+            
+                <p><strong>Пример CSS-правила:</strong></p>
+                <pre><code>p { 
+                color: blue; 
+                font-size: 16px; 
+            }</code></pre>
+                <p>Этот код задает <span style="color:blue;">синий цвет</span> и размер шрифта <code>16px</code> для всех абзацев.</p>
+            
+                <p><strong>Способы добавления CSS:</strong></p>
+                <ul>
+                    <li><strong>Встроенный</strong> — в теге <code>&lt;style&gt;</code> внутри HTML.</li>
+                    <li><strong>Внешний</strong> — подключение через <code>&lt;link&gt;</code> к отдельному CSS-файлу.</li>
+                    <li><strong>Внутри атрибута</strong> <code>style</code> — непосредственно в теге элемента.</li>
+                </ul>
+            </div>
+            </div>
+        <div class="qa-item">
+            <div class="question">Описать способы подключения каскадных таблиц стилей, привести примеры</div>
+            <div class="answer">
+                <p><strong>Способы подключения CSS</strong></p>
+            
+                <p><strong>1. Внешний файл</strong></p>
+                <p>CSS-код записывается в отдельный файл (например, <code>styles.css</code>) и подключается в <code>&lt;head&gt;</code> с помощью тега <code>&lt;link&gt;</code>:</p>
+                <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+                <p><strong>Преимущества:</strong> удобно для масштабируемых проектов, код хранится отдельно от HTML.</p>
+            
+                <p><strong>2. Встроенные стили в HTML</strong></p>
+                <p>Стили размещаются внутри тега <code>&lt;style&gt;</code> в <code>&lt;head&gt;</code>:</p>
+                <pre><code>&lt;style&gt;
+            p { color: blue; }
+            &lt;/style&gt;
+            </code></pre>
+                <p><strong>Когда использовать:</strong> подходит для небольших страниц или тестирования стилей.</p>
+            
+                <p><strong>3. Атрибут <code>style</code></strong></p>
+                <p>Стили задаются непосредственно в теге элемента через атрибут <code>style</code>:</p>
+                <pre><code>&lt;p style="color: red;"&gt;Текст&lt;/p&gt;</code></pre>
+                <p><strong>Использование:</strong> для точечных изменений, но не рекомендуется для крупных проектов.</p>
+            </div>
+            </div>
+        <div class="qa-item">
+            <div class="question">Дать определение селекторам. Привести примеры</div>
+            <div class="answer">
+                <p><strong>Селекторы в CSS</strong> — это конструкции, которые определяют, к каким элементам HTML будут применяться стили.</p>
+            
+                <p><strong>Основные виды селекторов:</strong></p>
+            
+                <ul>
+                    <li><strong>По тегу:</strong> применяется ко всем указанным тегам.</li>
+                    <pre><code>p { color: blue; }</code></pre>
+                    <p>Все абзацы <code>&lt;p&gt;</code> будут синими.</p>
+            
+                    <li><strong>По классу:</strong> применяется к элементам с указанным классом (через <code>.</code>).</li>
+                    <pre><code>.menu { font-size: 16px; }</code></pre>
+                    <p>Все элементы с классом <code>menu</code> получат размер шрифта 16px.</p>
+            
+                    <li><strong>По ID:</strong> применяется к элементу с указанным <code>id</code> (через <code>#</code>).</li>
+                    <pre><code>#footer { background: gray; }</code></pre>
+                    <p>Элемент с <code>id="footer"</code> получит серый фон.</p>
+            
+                    <li><strong>Универсальный селектор:</strong> применяется ко всем элементам.</li>
+                    <pre><code>* { padding: 0; }</code></pre>
+                    <p>Убирает отступы у всех элементов.</p>
+            
+                    <li><strong>Групповой селектор:</strong> позволяет применять стиль к нескольким элементам.</li>
+                    <pre><code>h1, h2 { color: green; }</code></pre>
+                    <p>Все заголовки <code>&lt;h1&gt;</code> и <code>&lt;h2&gt;</code> будут зелеными.</p>
+            
+                    <li><strong>Селектор потомков:</strong> применяется к элементам внутри другого элемента.</li>
+                    <pre><code>div p { font-weight: bold; }</code></pre>
+                    <p>Все абзацы <code>&lt;p&gt;</code> внутри <code>&lt;div&gt;</code> станут жирными.</p>
+            
+                    <li><strong>Дочерний селектор:</strong> применяется только к непосредственным дочерним элементам.</li>
+                    <pre><code>ul &gt; li { list-style: none; }</code></pre>
+                    <p>Сбрасывает маркеры у элементов <code>&lt;li&gt;</code>, которые являются прямыми потомками <code>&lt;ul&gt;</code>.</p>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Дать определение псевдо-классам CSS. Привести примеры</div>
+            <div class="answer">
+                <p><strong>Псевдо-классы в CSS</strong> — это специальные ключевые слова, добавляемые к селекторам через двоеточие <code>:</code>, которые определяют состояние или позицию элемента на странице.</p>
+            
+                <p>Псевдо-классы позволяют применять стили в зависимости от взаимодействия пользователя или структуры документа.</p>
+            
+                <p><strong>Примеры псевдо-классов:</strong></p>
+            
+                <ul>
+                    <li><strong>:hover</strong> — применяется при наведении на элемент.</li>
+                    <pre><code>button:hover { background: red; }</code></pre>
+                    <p>Кнопка краснеет при наведении.</p>
+            
+                    <li><strong>:active</strong> — применяется, когда элемент активен (например, при клике).</li>
+                    <pre><code>a:active { color: green; }</code></pre>
+                    <p>Ссылка становится зеленой при клике.</p>
+            
+                    <li><strong>:visited</strong> — применяется к посещенным ссылкам.</li>
+                    <pre><code>a:visited { color: purple; }</code></pre>
+                    <p>Посещенные ссылки становятся фиолетовыми.</p>
+            
+                    <li><strong>:first-child</strong> — применяется к первому элементу в родительском контейнере.</li>
+                    <pre><code>li:first-child { font-weight: bold; }</code></pre>
+                    <p>Первый элемент списка становится жирным.</p>
+            
+                    <li><strong>:last-child</strong> — применяется к последнему элементу в родительском контейнере.</li>
+                    <pre><code>li:last-child { color: blue; }</code></pre>
+                    <p>Последний элемент списка становится синим.</p>
+            
+                    <li><strong>:nth-child(n)</strong> — применяется к элементу, который является <code>n</code>-м ребенком родителя.</li>
+                    <pre><code>li:nth-child(2) { background: yellow; }</code></pre>
+                    <p>Второй элемент списка становится желтым.</p>
+            
+                    <li><strong>:focus</strong> — применяется к элементу, который находится в фокусе (например, поле ввода).</li>
+                    <pre><code>input:focus { border: 2px solid blue; }</code></pre>
+                    <p>Поле ввода получает синюю рамку при фокусе.</p>
+                </ul>
+            </div>
+            </div>
+        <div class="qa-item">
+            <div class="question">Дать определение псевдо-элементам CSS. Привести примеры</div>
+            <div class="answer">
+                <p><strong>Псевдо-элементы в CSS</strong> — это ключевые слова, добавляемые к селекторам через <code>::</code>, которые позволяют стилизовать определенные части элемента или добавлять виртуальный контент, отсутствующий в HTML.</p>
+            
+                <p>Псевдо-элементы применяются к конкретным фрагментам, таким как первая буква, строка или области перед и после содержимого.</p>
+            
+                <p><strong>Примеры псевдо-элементов:</strong></p>
+            
+                <ul>
+                    <li><strong>::before</strong> — добавляет контент перед содержимым элемента.</li>
+                    <pre><code>p::before { content: ">> "; color: red; }</code></pre>
+                    <p>Добавляет красные символы ">>" перед текстом абзаца.</p>
+            
+                    <li><strong>::after</strong> — добавляет контент после содержимого элемента.</li>
+                    <pre><code>p::after { content: " [OK]"; color: green; }</code></pre>
+                    <p>Добавляет зеленое " [OK]" после текста абзаца.</p>
+            
+                    <li><strong>::first-line</strong> — применяется к первой строке текста внутри элемента.</li>
+                    <pre><code>p::first-line { font-weight: bold; }</code></pre>
+                    <p>Первая строка текста становится жирной.</p>
+            
+                    <li><strong>::first-letter</strong> — применяется к первой букве элемента.</li>
+                    <pre><code>p::first-letter { font-size: 2em; }</code></pre>
+                    <p>Первая буква абзаца увеличивается в размере.</p>
+            
+                    <li><strong>::selection</strong> — применяется к выделенному тексту пользователем.</li>
+                    <pre><code>::selection { background: blue; color: white; }</code></pre>
+                    <p>Выделенный текст отображается с белым цветом на синем фоне.</p>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать адаптивную верстку страниц при помощи CSS, назвать подходы к адаптивной верстке</div>
+            <div class="answer">
+                <p><strong>Адаптивная верстка</strong> — это создание страниц, которые подстраиваются под размер экрана с помощью CSS.</p>
+            
+                <p>Для этого используются:</p>
+                <ul>
+                    <li><strong>Медиа-запросы</strong> (<code>@media</code>) для условий по ширине экрана.</li>
+                    <pre><code>@media (min-width: 600px) { /* стили для экранов шире 600px */ }</code></pre>
+            
+                    <li><strong>Относительные единицы</strong> (<code>%</code>, <code>vw</code>, <code>rem</code>) для гибкости размеров.</li>
+            
+                    <li><strong>Flexbox</strong> и <strong>Grid</strong> для создания адаптивных макетов.</li>
+                </ul>
+            
+                <p><strong>Подходы к адаптивной верстке:</strong></p>
+            
+                <ul>
+                    <li><strong>Mobile First:</strong> базовые стили задаются для малых экранов, а затем через медиа-запросы добавляются изменения для больших экранов.</li>
+                    <pre><code>@media (min-width: 768px) { /* стили для экранов шире 768px */ }</code></pre>
+            
+                    <li><strong>Desktop First:</strong> базовые стили задаются для больших экранов, и изменения для малых экранов добавляются через медиа-запросы.</li>
+                    <pre><code>@media (max-width: 600px) { /* стили для экранов уже 600px */ }</code></pre>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Определить управление положением на странице (свойства left, top, z-index, position, visibility, overflow)</div>
+            <div class="answer">
+                <p><strong>Управление положением элементов</strong> осуществляется с помощью свойств CSS, которые определяют расположение, видимость и поведение контента на странице.</p>
+            
+                <p><strong>Основные свойства для управления позиционированием:</strong></p>
+            
+                <ul>
+                    <li><strong>position</strong>: задает тип позиционирования элемента.</li>
+                    <pre><code>position: static; /* по умолчанию */</code></pre>
+                    <p>Возможные значения:
+                        <ul>
+                            <li><strong>static</strong> — стандартное позиционирование;</li>
+                            <li><strong>relative</strong> — позиционирование относительно исходного положения;</li>
+                            <li><strong>absolute</strong> — абсолютное позиционирование относительно ближайшего родительского элемента с позиционированием;</li>
+                            <li><strong>fixed</strong> — фиксированное позиционирование относительно окна браузера;</li>
+                            <li><strong>sticky</strong> — элемент фиксируется на экране при прокрутке.</li>
+                        </ul>
+                    </p>
+            
+                    <li><strong>left, top</strong>: сдвигают элемент по горизонтали и вертикали относительно его позиции.</li>
+                    <pre><code>left: 20px; top: 10px;</code></pre>
+                    <p>Работают с позиционированием <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>.</p>
+            
+                    <li><strong>z-index</strong>: управляет порядком наложения элементов.</li>
+                    <pre><code>z-index: 10;</code></pre>
+                    <p>Чем выше значение, тем выше слой элемента.</p>
+            
+                    <li><strong>visibility</strong>: управляет видимостью элемента.</li>
+                    <pre><code>visibility: hidden;</code></pre>
+                    <p>Возможные значения:
+                        <ul>
+                            <li><strong>visible</strong> — элемент видим;</li>
+                            <li><strong>hidden</strong> — элемент скрыт, но его место сохраняется на странице.</li>
+                        </ul>
+                    </p>
+            
+                    <li><strong>overflow</strong>: определяет поведение переполненного контента внутри элемента.</li>
+                    <pre><code>overflow: scroll;</code></pre>
+                    <p>Возможные значения:
+                        <ul>
+                            <li><strong>visible</strong> — контент выходит за пределы контейнера;</li>
+                            <li><strong>hidden</strong> — контент скрыт;</li>
+                            <li><strong>scroll</strong> — добавляются полосы прокрутки;</li>
+                            <li><strong>auto</strong> — полосы прокрутки появляются, если это необходимо.</li>
+                        </ul>
+                    </p>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать Flex модель</div>
+            <div class="answer">
+                <p><strong>Flexbox</strong> — это модель CSS для гибкого размещения элементов в контейнере. Она задается с помощью свойства <code>display: flex</code> для родительского элемента.</p>
+            
+                <p>Flexbox позволяет выстраивать дочерние элементы в ряд или столбец, автоматически подстраивая их под размер контейнера.</p>
+            
+                <p><strong>Основные свойства контейнера:</strong></p>
+                <ul>
+                    <li><strong>flex-direction</strong> — направление элементов внутри контейнера.</li>
+                    <pre><code>flex-direction: row; /* выстраивает элементы в строку */</code></pre>
+                    <p>Возможные значения:
+                        <ul>
+                            <li><strong>row</strong> — элементы выстраиваются по горизонтали;</li>
+                            <li><strong>column</strong> — элементы выстраиваются по вертикали.</li>
+                        </ul>
+                    </p>
+            
+                    <li><strong>flex-wrap</strong> — перенос элементов, если они не помещаются в контейнер.</li>
+                    <pre><code>flex-wrap: wrap; /* элементы переносятся на следующую строку */</code></pre>
+                    <p>Возможные значения:
+                        <ul>
+                            <li><strong>nowrap</strong> — элементы не переносятся;</li>
+                            <li><strong>wrap</strong> — элементы переносятся на следующую строку;</li>
+                            <li><strong>wrap-reverse</strong> — перенос элементов в обратном порядке.</li>
+                        </ul>
+                    </p>
+            
+                    <li><strong>justify-content</strong> — выравнивание элементов по главной оси.</li>
+                    <pre><code>justify-content: center; /* выравнивание по центру */</code></pre>
+                    <p>Возможные значения:
+                        <ul>
+                            <li><strong>flex-start</strong> — выравнивание по началу;</li>
+                            <li><strong>center</strong> — выравнивание по центру;</li>
+                            <li><strong>space-between</strong> — элементы равномерно распределены, первый элемент у начала, последний — в конце;</li>
+                            <li><strong>space-around</strong> — элементы с равными промежутками между ними;</li>
+                            <li><strong>space-evenly</strong> — равные промежутки между всеми элементами.</li>
+                        </ul>
+                    </p>
+            
+                    <li><strong>align-items</strong> — выравнивание элементов по поперечной оси.</li>
+                    <pre><code>align-items: center; /* выравнивание по центру поперечной оси */</code></pre>
+                    <p>Возможные значения:
+                        <ul>
+                            <li><strong>stretch</strong> — элементы растягиваются по высоте;</li>
+                            <li><strong>center</strong> — элементы выравниваются по центру;</li>
+                            <li><strong>flex-start</strong> — элементы выравниваются по верхнему краю;</li>
+                            <li><strong>flex-end</strong> — элементы выравниваются по нижнему краю;</li>
+                            <li><strong>baseline</strong> — элементы выравниваются по базовой линии текста.</li>
+                        </ul>
+                    </p>
+                </ul>
+            
+                <p><strong>Свойства элементов внутри контейнера:</strong></p>
+                <ul>
+                    <li><strong>flex-grow</strong> — определяет, насколько элемент может растягиваться, если есть свободное место.</li>
+                    <pre><code>flex-grow: 1; /* элемент растягивается, чтобы занять все доступное место */</code></pre>
+            
+                    <li><strong>flex-shrink</strong> — определяет, насколько элемент будет сжиматься при нехватке места.</li>
+                    <pre><code>flex-shrink: 1; /* элемент сжимается, если места не хватает */</code></pre>
+            
+                    <li><strong>flex-basis</strong> — задает начальный размер элемента перед распределением оставшегося пространства.</li>
+                    <pre><code>flex-basis: 200px; /* начальный размер элемента */</code></pre>
+            
+                    <li><strong>flex</strong> — это сокращение для комбинированных свойств <code>flex-grow</code>, <code>flex-shrink</code> и <code>flex-basis</code>.</li>
+                    <pre><code>flex: 1; /* элемент растягивается, занимая все доступное место */</code></pre>
+                </ul>
+            
+                <p><strong>Пример:</strong></p>
+                <pre><code>.container { display: flex; justify-content: center; }</code></pre>
+                <pre><code>.item { flex: 1; }</code></pre>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать Grid модель</div>
+            <div class="answer">
+                <p><strong>Grid</strong> — это модель CSS для создания двумерных макетов, задаваемая с помощью свойства <code>display: grid</code>.</p>
+            
+                <p>Она позволяет определять строки и столбцы, размещая элементы в ячейках сетки с точным контролем их положения.</p>
+            
+                <p><strong>Основные свойства контейнера:</strong></p>
+                <ul>
+                    <li><strong>grid-template-columns</strong> — задает ширину столбцов.</li>
+                    <pre><code>grid-template-columns: 100px 200px;</code></pre>
+                    <p>Пример: задает первый столбец шириной 100px, второй — 200px.</p>
+            
+                    <li><strong>grid-template-rows</strong> — задает высоту строк.</li>
+                    <pre><code>grid-template-rows: 50px 50px;</code></pre>
+                    <p>Пример: задает две строки по 50px.</p>
+            
+                    <li><strong>gap</strong> — расстояние между ячейками.</li>
+                    <pre><code>gap: 10px;</code></pre>
+                    <p>Задает отступы между строками и столбцами.</p>
+            
+                    <li><strong>grid-auto-rows</strong> — задает размер дополнительных строк, которые автоматически создаются.</li>
+                    <pre><code>grid-auto-rows: 100px;</code></pre>
+                    <p>Пример: устанавливает высоту всех автоматически создаваемых строк в 100px.</p>
+            
+                    <li><strong>repeat</strong> и <strong>minmax</strong> — упрощают настройку гибких сеток.</li>
+                    <pre><code>grid-template-columns: repeat(2, 1fr);</code></pre>
+                    <p>Пример: <code>repeat(2, 1fr)</code> означает два одинаковых столбца, которые занимают одинаковое пространство.</p>
+                </ul>
+            
+                <p><strong>Свойства элементов внутри контейнера:</strong></p>
+                <ul>
+                    <li><strong>grid-column</strong> и <strong>grid-row</strong> — указывают, сколько столбцов и строк занимает элемент.</li>
+                    <pre><code>grid-column: 1 / 3;</code></pre>
+                    <pre><code>grid-row: 1 / 2;</code></pre>
+                    <p>Пример: элемент начинается с первого столбца и заканчивается на третьем.</p>
+            
+                    <li><strong>span</strong> — задает протяженность элемента по строкам или столбцам.</li>
+                    <pre><code>grid-column: span 2;</code></pre>
+                    <p>Пример: элемент занимает два столбца.</p>
+                </ul>
+            
+                <p><strong>Пример:</strong></p>
+                <pre><code>.grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }</code></pre>
+                <pre><code>.item { grid-column: span 2; }</code></pre>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать создание анимации в CSS (переходы, ключевые кадры) и визуальные эффекты</div>
+            <div class="answer">
+                <p><strong>Анимации в CSS</strong> создаются с помощью переходов (<code>transition</code>) и ключевых кадров (<code>@keyframes</code>). Они добавляют визуальные эффекты, улучшая оформление веб-страниц.</p>
+            
+                <p><strong>transition</strong>: плавное изменение свойств.</p>
+                <p>Пример:</p>
+                <pre><code>transition: width 2s ease;</code></pre>
+                <p>Ширина элемента меняется за 2 секунды с использованием функции <code>ease</code> для плавного эффекта.</p>
+            
+                <p><strong>@keyframes</strong>: задает этапы анимации.</p>
+                <p>Пример:</p>
+                <pre><code>@keyframes move {
+              0% { left: 0; }
+              100% { left: 100px; }
+            }</code></pre>
+                <p>С помощью <code>animation</code> применяется анимация:</p>
+                <pre><code>animation: move 3s;</code></pre>
+                <p>Элемент будет перемещаться с 0 пикселей до 100 пикселей за 3 секунды.</p>
+            
+                <p><strong>Визуальные эффекты:</strong></p>
+                <ul>
+                    <li><strong>box-shadow</strong> — тень (например, <code>5px 5px 10px black</code>).</li>
+                    <li><strong>opacity</strong> — прозрачность (значения от 0 до 1).</li>
+                    <li><strong>filter</strong> — визуальные эффекты, например: <code>blur(5px)</code> или <code>brightness(150%)</code>.</li>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать JavaScript, назначение, способы размещение, основные операторы</div>
+            <div class="answer">
+                <p><strong>JavaScript</strong> — это язык программирования для добавления интерактивности и динамики на веб-страницы.</p>
+            
+                <p><strong>Назначение:</strong></p>
+                <ul>
+                    <li>Управление элементами страницы.</li>
+                    <li>Обработка событий.</li>
+                    <li>Взаимодействие с сервером.</li>
+                </ul>
+            
+                <p><strong>Способы размещения:</strong></p>
+                <ul>
+                    <li><strong>Внутри HTML</strong>: <code>&lt;script&gt;alert('Привет');&lt;/script&gt;</code></li>
+                    <li><strong>Внешний файл</strong>: <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></li>
+                    <li><strong>В атрибутах</strong>: <code>&lt;button onclick="alert('Клик')"&gt;</code></li>
+                </ul>
+            
+                <p><strong>Основные операторы:</strong></p>
+                <ul>
+                    <li><strong>Присваивание:</strong> <code>let x = 5;</code></li>
+                    <li><strong>Арифметические:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
+                    <li><strong>Сравнение:</strong> <code>==</code> (равно), <code>===</code> (строго равно), <code>&gt;</code>, <code>&lt;</code></li>
+                    <li><strong>Логические:</strong> <code>&amp;&amp;</code> (и), <code>||</code> (или), <code>!</code> (не)</li>
+                    <li><strong>Условные:</strong> <code>if (условие) { код } else { код }</code></li>
+                    <li><strong>Циклы:</strong> <code>for (let i = 0; i &lt; n; i++)</code>, <code>while (условие)</code></li>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать обработку событий средствами DHTML. Описать DHTML</div>
+            <div class="answer">
+                <p><strong>DHTML (Dynamic HTML)</strong> — это сочетание HTML, CSS и JavaScript для создания динамичных и интерактивных веб-страниц.</p>
+            
+                <p><strong>Роль технологий:</strong></p>
+                <ul>
+                    <li><strong>HTML</strong> задает структуру.</li>
+                    <li><strong>CSS</strong> отвечает за оформление.</li>
+                    <li><strong>JavaScript</strong> управляет поведением и изменениями в реальном времени.</li>
+                </ul>
+            
+                <p><strong>Обработка событий в DHTML</strong> реализуется через JavaScript. События (клики, наведение, нажатия клавиш) ловятся и обрабатываются для динамического изменения страницы.</p>
+            
+                <p><strong>Способы обработки событий:</strong></p>
+                <ul>
+                    <li><strong>Атрибуты HTML:</strong> <code>&lt;button onclick="alert('Клик')"&gt;</code></li>
+                    <li><strong>Свойства DOM:</strong> <code>element.onclick = function() { код };</code></li>
+                    <li><strong>addEventListener:</strong> <code>element.addEventListener("click", function() { код });</code></li>
+                </ul>
+            
+                <p><strong>Пример:</strong></p>
+                <pre><code>&lt;div id="elem"&gt;Клик&lt;/div&gt;
+            &lt;script&gt;
+              document.getElementById("elem").addEventListener("click", function() {
+                this.style.color = "blue";
+              });
+            &lt;/script&gt;</code></pre>
+                <p>Когда пользователь кликает на элемент <code>&lt;div id="elem"&gt;</code>, его текст становится синим.</p>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Дать определение массивам JavaScript. Методы работы с массивами JavaScript</div>
+            <div class="answer">
+                <p><strong>Массив</strong> — это упорядоченная коллекция данных, хранящая элементы под числовыми индексами (начиная с 0). Массив используется для работы с набором значений.</p>
+            
+                <p><strong>Методы работы с массивами:</strong></p>
+                <ul>
+                    <li><strong>Добавление:</strong>
+                        <ul>
+                            <li><code>push</code> — добавляет элемент в конец массива.</li>
+                            <li><code>unshift</code> — добавляет элемент в начало массива.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Удаление:</strong>
+                        <ul>
+                            <li><code>pop</code> — удаляет элемент с конца массива.</li>
+                            <li><code>shift</code> — удаляет элемент с начала массива.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Изменение:</strong>
+                        <ul>
+                            <li><code>splice</code> — удаляет или вставляет элементы в массив.</li>
+                            <li><code>slice</code> — создает новый массив, копируя часть исходного.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Поиск:</strong>
+                        <ul>
+                            <li><code>indexOf</code> — находит индекс элемента.</li>
+                            <li><code>includes</code> — проверяет, содержится ли элемент в массиве.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Перебор:</strong>
+                        <ul>
+                            <li><code>forEach</code> — проходит по всем элементам массива.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Преобразование:</strong>
+                        <ul>
+                            <li><code>map</code> — создает новый массив с изменениями.</li>
+                            <li><code>filter</code> — фильтрует элементы массива по заданному условию.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Соединение:</strong>
+                        <ul>
+                            <li><code>join</code> — объединяет элементы массива в строку.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Определить функции и методы функций JavaScript</div>
+            <div class="answer">
+                <p><strong>Функции</strong> — это блоки кода, выполняющие задачу, которые можно вызывать многократно. Они определяются через <code>function</code>, выражение или стрелочные функции (<code>=></code>). Функции используются для повторного использования кода и обработки данных.</p>
+            
+                <p><strong>Методы</strong> — это функции, встроенные в объекты или типы данных, либо специальные методы самих функций (<code>call</code>, <code>apply</code>, <code>bind</code>).</p>
+            
+                <p><strong>Примеры:</strong></p>
+                <ul>
+                    <li><strong>Функция:</strong> 
+                        <pre><code>function sum(a, b) { return a + b; }</code></pre>
+                        — возвращает сумму двух чисел.
+                    </li>
+                    <li><strong>Метод массива:</strong> 
+                        <pre><code>arr.push(5)</code></pre>
+                        — добавляет элемент в конец массива.
+                    </li>
+                    <li><strong>Методы функций:</strong>
+                        <ul>
+                            <li><code>call(this, arg1, arg2)</code> — вызывает функцию с заданным контекстом <code>this</code>.</li>
+                            <li><code>apply(this, [args])</code> — то же, что и <code>call</code>, но аргументы передаются в виде массива.</li>
+                            <li><code>bind(this)</code> — создает новую функцию с фиксированным контекстом <code>this</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Определить понятие области видимости переменных JavaScript</div>
+            <div class="answer">
+                <p><strong>Область видимости</strong> — это участок кода, где переменная доступна для использования. Она определяется местом её объявления и способом (var, let, const).</p>
+            
+                <p><strong>Типы области видимости:</strong></p>
+                <ul>
+                    <li><strong>Глобальная:</strong> переменная видна везде, она объявлена вне функций и блоков.</li>
+                    <li><strong>Локальная (функциональная):</strong> переменная видна только внутри функции, где она была объявлена.</li>
+                    <li><strong>Блочная:</strong> переменная видна только внутри блока (<code>{}</code>) при использовании <code>let</code> или <code>const</code>. 
+                        <br> (В случае <code>var</code> область видимости игнорирует блоки и имеет функциональную область видимости.)</li>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать принцип работы функций временной задержки JavaScript</div>
+            <div class="answer">
+                <p><strong>Функции временной задержки</strong> (<code>setTimeout</code> и <code>setInterval</code>) позволяют откладывать или повторять выполнение кода. Эти функции работают асинхронно, ставя задачу в очередь событий, не блокируя основной поток выполнения.</p>
+            
+                <p><strong>setTimeout(функция, задержка):</strong> выполняет функцию один раз после указанной задержки (в миллисекундах).</p>
+                <p><strong>setInterval(функция, интервал):</strong> повторяет выполнение функции через заданный интервал.</p>
+            
+                <p><strong>Остановка:</strong></p>
+                <ul>
+                    <li><code>clearTimeout(id)</code> — для остановки <code>setTimeout</code></li>
+                    <li><code>clearInterval(id)</code> — для остановки <code>setInterval</code>, где <code>id</code> — идентификатор таймера.</li>
+                </ul>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Описать объекты в JavaScript</div>
+            <div class="answer">
+                <p><strong>Объект в JavaScript</strong> — это структура данных, состоящая из ключей и значений.</p>
+            
+                <p><strong>Создание объекта:</strong></p>
+                <ul>
+                    <li><code>const obj = { key: "value" };</code></li>
+                    <li><code>const obj2 = new Object();</code></li>
+                    <li><code>const obj3 = Object.create(proto);</code></li>
+                </ul>
+            
+                <p><strong>Доступ к свойствам:</strong></p>
+                <ul>
+                    <li><code>obj.key;</code></li>
+                    <li><code>obj["key"];</code></li>
+                </ul>
+            
+                <p><strong>Добавление и удаление свойств:</strong></p>
+                <ul>
+                    <li><code>obj.newKey = "newValue";</code></li>
+                    <li><code>delete obj.newKey;</code></li>
+                </ul>
+            
+                <p><strong>Перебор свойств:</strong></p>
+                <pre><code>for (let key in obj) console.log(obj[key]);</code></pre>
+            
+                <p><strong>Методы объектов:</strong></p>
+                <pre><code>const user = { name: "Анна", sayHi() { console.log(`Привет, ${this.name}`); } };</code></pre>
+            
+                <p><strong>Копирование объектов:</strong></p>
+                <ul>
+                    <li><code>const newObj = { ...obj };</code> (поверхностное копирование)</li>
+                    <li><code>const deepCopy = JSON.parse(JSON.stringify(obj));</code> (глубокое копирование)</li>
+                </ul>
+            
+                <p><strong>Методы Object:</strong></p>
+                <ul>
+                    <li><code>Object.keys(obj);</code></li>
+                    <li><code>Object.values(obj);</code></li>
+                    <li><code>Object.entries(obj);</code></li>
+                </ul>
+            
+                <p><strong>Объекты</strong> хранят данные, методы, поддерживают наследование и гибкие манипуляции.</p>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Описать способы создания функционального конструктора классов JavaScript</div>
+            <div class="answer">
+                <p><strong>Функция-конструктор:</strong></p>
+                <pre><code>function Person(name, age) { 
+                this.name = name; 
+                this.age = age; 
+            }</code></pre>
+            
+                <p><strong>Функция-конструктор + prototype (лучше для памяти):</strong></p>
+                <pre><code>Person.prototype.sayHello = function () { 
+                console.log(`Привет, меня зовут ${this.name}!`); 
+            };</code></pre>
+            
+                <p><strong>Создание объекта через Object.create():</strong></p>
+                <pre><code>const personMethods = { 
+                sayHello: function() { 
+                    console.log(`Привет, ${this.name}`); 
+                }
+            };
+            
+            function createPerson(name) { 
+                return Object.create(personMethods, { 
+                    name: { value: name } 
+                }); 
+            }</code></pre>
+            
+                <p><strong>Современный class (предпочтительно в ES6+):</strong></p>
+                <pre><code>class Person { 
+                constructor(name) { 
+                    this.name = name; 
+                } 
+                sayHello() { 
+                    console.log(`Привет, ${this.name}!`); 
+                } 
+            }</code></pre>
+            
+                <p><strong>Вывод:</strong></p>
+                <ul>
+                    <li><strong>Использование prototype</strong> снижает расход памяти.</li>
+                    <li><strong>Object.create()</strong> дает гибкость, но менее удобен.</li>
+                    <li><strong>class (ES6)</strong> – современный стандарт, который заменяет функциональные конструкторы.</li>
+                </ul>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Описать прототипирование объектов в JavaScript</div>
+            <div class="answer">
+                <p><strong>Прототип</strong> — это механизм наследования, где объекты могут разделять методы через цепочку <code>__proto__</code>.</p>
+            
+                <p><strong>Создание прототипа через Object.create():</strong></p>
+                <pre><code>const parent = { 
+                greet: () => console.log("Привет!") 
+            }; 
+            const child = Object.create(parent); 
+            child.greet(); // Привет!</code></pre>
+            
+                <p><strong>Наследование через prototype в функциях-конструкторах:</strong></p>
+                <pre><code>function Person(name) { 
+                this.name = name; 
+            } 
+            Person.prototype.sayHello = function () { 
+                console.log(`Привет, ${this.name}!`); 
+            };</code></pre>
+            
+                <p>Цепочка прототипов позволяет объектам искать свойства вверх по <code>__proto__</code>.</p>
+            
+                <p><strong>Важно:</strong> Изменять встроенные прототипы (<code>Array.prototype</code>, <code>String.prototype</code>) — плохая практика.</p>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать наследование функциональных конструкторов, обычное и через прототип в JavaScript</div>
+            <div class="answer">
+                <p><strong>Функции-конструкторы</strong> — это старый способ создания объектов (до появления <code>class</code>).</p>
+            
+                <p><strong>Два способа наследования:</strong></p>
+            
+                <p><strong>1. Через <code>call()</code>:</strong> копирует свойства родителя в дочерний конструктор.</p>
+                <pre><code>function Animal(name) { 
+                this.name = name; 
+            }
+            
+            function Dog(name, breed) { 
+                Animal.call(this, name); 
+                this.breed = breed; 
+            }</code></pre>
+                <p><strong>❌ Недостаток:</strong> дублирование методов.</p>
+            
+                <p><strong>2. Через <code>prototype</code>:</strong> экономит память и делает код чище.</p>
+                <pre><code>Dog.prototype = Object.create(Animal.prototype); 
+            Dog.prototype.constructor = Dog;</code></pre>
+                <p><strong>✅ Преимущество:</strong> экономия памяти, улучшенная читаемость кода.</p>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Определить классы в языке JavaScript</div>
+            <div class="answer">
+                <p><strong>Класс</strong> — это шаблон для создания объектов, введенный в ES6.</p>
+            
+                <p><strong>Основной синтаксис:</strong></p>
+                <pre><code>class Person { 
+                constructor(name, age) { 
+                    this.name = name; 
+                    this.age = age; 
+                } 
+                
+                sayHello() { 
+                    console.log(\`Привет, меня зовут ${this.name}!\`); 
+                } 
+            }
+            
+            const person = new Person("Алекс", 30); 
+            person.sayHello(); // Привет, меня зовут Алекс!</code></pre>
+            
+                <p><strong>Важные возможности:</strong></p>
+                <ul>
+                    <li><strong>Наследование:</strong> <code>class Child extends Parent {}</code></li>
+                    <li><strong>Геттеры/сеттеры:</strong> <code>get name() {}</code> / <code>set name(value) {}</code></li>
+                    <li><strong>Статические методы:</strong> <code>static methodName() {}</code></li>
+                    <li><strong>Приватные свойства:</strong> <code>#название_свойства</code></li>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать наследование классов в JavaScript</div>
+            <div class="answer">
+                <p><strong>Наследование</strong> — это механизм, позволяющий одному классу (потомку) получить свойства и методы другого класса (родителя). Используется ключевое слово <code>extends</code>.</p>
+            
+                <p><strong>Как работает:</strong></p>
+                <ul>
+                    <li>Родительский класс определяет общие свойства и методы.</li>
+                    <li>Класс-наследник получает эти свойства и может добавлять свои.</li>
+                    <li>Метод <code>super()</code> используется для вызова конструктора родителя.</li>
+                    <li>Методы можно переопределять, изменяя их поведение.</li>
+                </ul>
+            
+                <p><strong>Пример:</strong></p>
+                <pre><code>class Animal { 
+                    constructor(name) { 
+                        this.name = name; 
+                    } 
+                    
+                    makeSound() { 
+                        console.log("Животное издает звук"); 
+                    } 
+                }
+            
+                class Dog extends Animal { 
+                    constructor(name, breed) { 
+                        super(name); 
+                        this.breed = breed; 
+                    } 
+                    
+                    makeSound() { 
+                        console.log("Гав-гав!"); 
+                    } 
+                }
+            
+                const myDog = new Dog("Шарик", "Овчарка"); 
+                myDog.makeSound(); // Гав-гав!</code></pre>
+            </div>
+            </div>
+        <div class="qa-item">
+            <div class="question">Описать класс Date в JavaScript. Пример использования</div>
+            <div class="answer">
+                <p><strong>Date</strong> — встроенный класс в JavaScript для работы с датами и временем.</p>
+            
+                <p><strong>Создание объектов Date:</strong></p>
+                <ul>
+                    <li><code>new Date()</code> — текущая дата и время.</li>
+                    <li><code>new Date("YYYY-MM-DD")</code> — создание даты из строки.</li>
+                    <li><code>new Date(год, месяц, день, часы, минуты, секунды, миллисекунды)</code> — создание даты по числовым параметрам.</li>
+                </ul>
+            
+                <p><strong>Основные методы:</strong></p>
+                <h3>Получение данных:</h3>
+                <ul>
+                    <li><code>getFullYear()</code> — возвращает год.</li>
+                    <li><code>getMonth()</code> — возвращает месяц (от 0 до 11).</li>
+                    <li><code>getDate()</code> — возвращает день месяца.</li>
+                    <li><code>getDay()</code> — возвращает день недели (от 0 до 6).</li>
+                    <li><code>getHours()</code> — возвращает часы.</li>
+                    <li><code>getMinutes()</code> — возвращает минуты.</li>
+                    <li><code>getSeconds()</code> — возвращает секунды.</li>
+                </ul>
+            
+                <h3>Установка данных:</h3>
+                <ul>
+                    <li><code>setFullYear()</code> — устанавливает год.</li>
+                    <li><code>setMonth()</code> — устанавливает месяц.</li>
+                    <li><code>setDate()</code> — устанавливает день месяца.</li>
+                    <li><code>setHours()</code> — устанавливает часы.</li>
+                    <li><code>setMinutes()</code> — устанавливает минуты.</li>
+                    <li><code>setSeconds()</code> — устанавливает секунды.</li>
+                </ul>
+            
+                <h3>Форматирование:</h3>
+                <ul>
+                    <li><code>toISOString()</code> — возвращает дату в формате ISO 8601.</li>
+                    <li><code>toLocaleDateString()</code> — возвращает строку с датой в локализованном формате.</li>
+                    <li><code>toLocaleTimeString()</code> — возвращает строку с временем в локализованном формате.</li>
+                    <li><code>toLocaleString()</code> — возвращает строку с датой и временем в локализованном формате.</li>
+                </ul>
+            
+                <p><strong>Дополнительно:</strong></p>
+                <ul>
+                    <li><code>getTime()</code> — возвращает количество миллисекунд с 1 января 1970 года.</li>
+                    <li>Используется с <code>setTimeout()</code> и <code>setInterval()</code> для работы с таймерами.</li>
+                </ul>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Определить объектную модель BOM</div>
+            <div class="answer">
+                <p><strong>BOM</strong> — это набор объектов, предоставляемых браузером, которые позволяют взаимодействовать с браузером и управлять поведением веб-страницы.</p>
+            
+                <p><strong>Основные объекты BOM:</strong></p>
+            
+                <h3>Объект <code>window</code></h3>
+                <p>Является корневым объектом BOM и представляет текущее окно браузера.</p>
+            
+                <h3>Объект <code>navigator</code></h3>
+                <p>Предоставляет информацию о браузере и операционной системе:</p>
+                <ul>
+                    <li><code>navigator.userAgent</code> — информация о браузере.</li>
+                    <li><code>navigator.language</code> — язык браузера.</li>
+                </ul>
+            
+                <h3>Объект <code>screen</code></h3>
+                <p>Предоставляет информацию о размерах экрана:</p>
+                <ul>
+                    <li><code>screen.width</code> — ширина экрана.</li>
+                    <li><code>screen.height</code> — высота экрана.</li>
+                </ul>
+            
+                <h3>Объект <code>location</code></h3>
+                <p>Управляет текущим URL:</p>
+                <ul>
+                    <li><code>location.href</code> — полный URL текущей страницы.</li>
+                    <li><code>location.pathname</code> — путь URL (без домена).</li>
+                </ul>
+            
+                <h3>Объект <code>history</code></h3>
+                <p>Управляет историей навигации:</p>
+                <ul>
+                    <li><code>history.back()</code> — возвращает на предыдущую страницу.</li>
+                    <li><code>history.forward()</code> — переходит на следующую страницу.</li>
+                </ul>
+            
+                <p>BOM позволяет разработчикам получать доступ к свойствам и методам браузера, управлять навигацией и адаптировать интерфейс.</p>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать объект window</div>
+            <div class="answer">
+                <p><strong>Объект <code>window</code></strong> представляет окно браузера и является глобальным объектом в JavaScript.</p>
+            
+                <h3>Основные свойства:</h3>
+                <ul>
+                    <li><code>window.document</code> — доступ к объекту <code>document</code>.</li>
+                    <li><code>window.location</code> — информация о текущем URL.</li>
+                    <li><code>window.history</code> — управление историей навигации.</li>
+                    <li><code>window.screen</code> — информация о размере экрана.</li>
+                </ul>
+            
+                <h3>Основные методы:</h3>
+                <ul>
+                    <li><code>window.alert(message)</code> — показывает модальное окно с сообщением.</li>
+                    <li><code>window.confirm(message)</code> — запрашивает подтверждение у пользователя.</li>
+                    <li><code>window.prompt(message, default)</code> — запрашивает ввод данных у пользователя.</li>
+                    <li><code>window.open(url, name, specs)</code> — открывает новое окно браузера.</li>
+                </ul>
+            
+                <h3>Обработка событий:</h3>
+                <p>Объект <code>window</code> позволяет обрабатывать события, такие как:</p>
+                <ul>
+                    <li>Загрузка страницы (например, через <code>window.onload</code>).</li>
+                    <li>Изменение размера окна (например, через <code>window.onresize</code>).</li>
+                </ul>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Описать объекты history, location, screen, navigator</div>
+            <div class="answer">
+                <h3>Объект <code>history</code>:</h3>
+                <p>Управляет историей навигации (переходы между страницами).</p>
+                <h4>Методы:</h4>
+                <ul>
+                    <li><code>history.back()</code> — возвращает на предыдущую страницу.</li>
+                    <li><code>history.forward()</code> — переходит к следующей странице.</li>
+                    <li><code>history.go(n)</code> — перемещает на <code>n</code> страниц вперед или назад.</li>
+                </ul>
+            
+                <h3>Объект <code>location</code>:</h3>
+                <p>Предоставляет информацию о текущем URL и позволяет изменять его.</p>
+                <h4>Свойства:</h4>
+                <ul>
+                    <li><code>location.href</code> — полный URL текущей страницы.</li>
+                    <li><code>location.hostname</code> — имя хоста.</li>
+                    <li><code>location.pathname</code> — путь текущего URL.</li>
+                </ul>
+            
+                <h3>Объект <code>screen</code>:</h3>
+                <p>Информирует о размерах экрана устройства.</p>
+                <h4>Свойства:</h4>
+                <ul>
+                    <li><code>screen.width</code> — ширина экрана.</li>
+                    <li><code>screen.height</code> — высота экрана.</li>
+                    <li><code>screen.availWidth</code> — доступная ширина экрана (исключая панель задач).</li>
+                    <li><code>screen.availHeight</code> — доступная высота экрана.</li>
+                </ul>
+            
+                <h3>Объект <code>navigator</code>:</h3>
+                <p>Предоставляет информацию о браузере и операционной системе пользователя.</p>
+                <h4>Свойства:</h4>
+                <ul>
+                    <li><code>navigator.userAgent</code> — строка с информацией о браузере и ОС.</li>
+                    <li><code>navigator.language</code> — язык, установленный в браузере.</li>
+                    <li><code>navigator.onLine</code> — проверка, подключен ли пользователь к сети.</li>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Определить модель DOM. Уровни. Структура документа</div>
+            <div class="answer">
+                <h3>DOM (Document Object Model)</h3>
+                <p>DOM — это программный интерфейс для HTML и XML-документов, представляющий их структуру в виде дерева узлов.</p>
+            
+                <h4>Уровни модели DOM:</h4>
+                <ul>
+                    <li><strong>Уровень 1:</strong> Структура документа — включает узлы <code>document</code>, элементы <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>.</li>
+                    <li><strong>Уровень 2:</strong> Узлы и связи — включает элементы узлов, атрибуты узлов, текстовые узлы.</li>
+                    <li><strong>Уровень 3:</strong> Структура и методы — включает методы для создания и изменения узлов.</li>
+                </ul>
+            
+                <h4>Структура документа:</h4>
+                <p>Основные узлы документа:</p>
+                <ul>
+                    <li><code>document</code> — корневой узел.</li>
+                    <li><code>&lt;html&gt;</code> — элемент, содержащий узлы <code>&lt;head&gt;</code> и <code>&lt;body&gt;</code>.</li>
+                    <li>Элементы внутри <code>&lt;body&gt;</code>: заголовки, параграфы, списки и другие элементы.</li>
+                </ul>
+            </div>
+                </div>
+        <div class="qa-item">
+            <div class="question">Описать объект document</div>
+            <div class="answer">
+                <h3>Объект document</h3>
+                <p>Объект <code>document</code> — это интерфейс для работы с HTML-документом в JavaScript, представляющий структуру страницы в виде дерева узлов.</p>
+            
+                <h4>Основные свойства:</h4>
+                <ul>
+                    <li><code>document.body</code> — доступ к элементу <code>&lt;body&gt;</code>.</li>
+                    <li><code>document.title</code> — получение или установка заголовка страницы.</li>
+                    <li><code>document.getElementById(id)</code> — получение элемента по ID.</li>
+                    <li><code>document.getElementsByClassName(className)</code> — получение элементов по классу.</li>
+                    <li><code>document.querySelector(selectors)</code> — получение первого элемента по CSS-селектору.</li>
+                    <li><code>document.createElement(tagName)</code> — создание нового элемента.</li>
+                </ul>
+            
+                <h4>Обработка событий:</h4>
+                <p>Для реагирования на события на странице используется метод <code>addEventListener</code>.</p>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Описать навигацию по дереву документов. Создание узлов</div>
+            <div class="answer">
+                <h3>DOM — Представление HTML-документа в виде дерева узлов</h3>
+                <p>DOM (Document Object Model) представляет HTML-документ в виде иерархического дерева узлов, каждый из которых можно манипулировать с помощью JavaScript.</p>
+            
+                <h4>Навигация по узлам:</h4>
+                <ul>
+                    <li><code>parentNode</code> — родительский узел.</li>
+                    <li><code>childNodes</code> — коллекция дочерних узлов.</li>
+                    <li><code>firstChild</code> и <code>lastChild</code> — первый и последний дочерний узел.</li>
+                    <li><code>nextSibling</code> и <code>previousSibling</code> — следующий и предыдущий узел на одном уровне.</li>
+                </ul>
+            
+                <h4>Методы поиска узлов:</h4>
+                <ul>
+                    <li><code>getElementById</code> — получение элемента по ID.</li>
+                    <li><code>getElementsByClassName</code> — получение элементов по классу.</li>
+                    <li><code>querySelector</code> — получение первого элемента по CSS-селектору.</li>
+                </ul>
+            
+                <h4>Создание и добавление узлов:</h4>
+                <p>Для создания нового узла используется метод <code>createElement</code>, а для добавления — метод <code>appendChild</code>.</p>
+                <pre><code>let newDiv = document.createElement("div");
+            newDiv.textContent = "Это новый блок.";
+            document.getElementById("container").appendChild(newDiv);</code></pre>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать процесс редактирование дерева элементов</div>
+            <div class="answer">
+                <h3>Дерево элементов (DOM)</h3>
+                <p>DOM (Document Object Model) — структура, представляющая HTML-документ в виде узлов, которые могут быть изменены, добавлены или удалены с помощью JavaScript.</p>
+            
+                <h4>Создание новых элементов:</h4>
+                <p>Для создания нового элемента используется метод <code>createElement</code>, а для добавления в DOM — метод <code>appendChild</code>.</p>
+                <pre><code>let newElement = document.createElement("div");
+            container.appendChild(newElement);</code></pre>
+            
+                <h4>Изменение элементов:</h4>
+                <p>Для изменения содержимого и атрибутов элементов используются следующие методы и свойства:</p>
+                <ul>
+                    <li><code>textContent</code> — для изменения текста элемента.</li>
+                    <li><code>innerHTML</code> — для изменения содержимого HTML элемента.</li>
+                    <li><code>setAttribute</code> — для изменения атрибутов элемента.</li>
+                </ul>
+                <pre><code>element.textContent = "Новый текст";</code></pre>
+            
+                <h4>Удаление элементов:</h4>
+                <p>Для удаления элемента используются следующие методы:</p>
+                <ul>
+                    <li><code>removeChild</code> — удаляет дочерний элемент из родителя.</li>
+                    <li><code>remove</code> — удаляет сам элемент.</li>
+                </ul>
+                <pre><code>parent.removeChild(child);</code></pre>
+            
+                <h4>Перемещение элементов:</h4>
+                <p>Методы <code>appendChild</code>, <code>insertBefore</code> и <code>replaceChild</code> позволяют перемещать элементы внутри DOM.</p>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать работу с массивами элементов в JavaScript. Привести пример</div>
+            <div class="answer">
+                <h3>Массивы в JavaScript</h3>
+                <p>Массивы — это объекты, которые позволяют хранить несколько значений в одной переменной. Массивы могут содержать элементы разных типов, например, строки, числа и другие объекты.</p>
+            
+                <h4>Создание массива:</h4>
+                <p>Массив можно создать следующим образом:</p>
+                <ul>
+                    <li>Используя литерал массива: <code>let fruits = ["apple", "banana", "orange"];</code></li>
+                    <li>Используя конструктор: <code>let fruits = new Array("apple", "banana", "orange");</code></li>
+                </ul>
+            
+                <h4>Доступ к элементам массива:</h4>
+                <p>Для доступа к элементам массива используется индекс, начиная с 0:</p>
+                <pre><code>fruits[0]; // "apple"</code></pre>
+            
+                <h4>Изменение элементов массива:</h4>
+                <p>Для изменения элемента массива достаточно присвоить новое значение по индексу:</p>
+                <pre><code>fruits[1] = "grape";</code></pre>
+            
+                <h4>Методы массивов:</h4>
+                <ul>
+                    <li><code>push()</code> — добавление элемента в конец массива.</li>
+                    <li><code>unshift()</code> — добавление элемента в начало массива.</li>
+                    <li><code>pop()</code> — удаление последнего элемента массива.</li>
+                    <li><code>shift()</code> — удаление первого элемента массива.</li>
+                    <li><code>indexOf()</code> — поиск индекса элемента в массиве.</li>
+                    <li><code>forEach()</code> — перебор элементов массива с выполнением функции для каждого элемента.</li>
+                    <li><code>map()</code> — создание нового массива с измененными элементами.</li>
+                </ul>
+            
+                <h4>Пример работы с массивами:</h4>
+                <pre><code>let fruits = ["apple", "banana"];
+            fruits.push("orange");     // добавление в конец
+            fruits.unshift("kiwi");    // добавление в начало
+            fruits.pop();              // удаление с конца
+            fruits.shift();            // удаление с начала
+            fruits.forEach(function(fruit) { 
+                console.log(fruit); 
+            });</code></pre>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Определить обработку событий при помощи JavaScript</div>
+            <div class="answer">
+                <h3>События в JavaScript</h3>
+                <p>События — это действия пользователя, такие как клики, ввод текста, отправка форм и другие, на которые JavaScript может реагировать и выполнять соответствующие действия.</p>
+            
+                <h4>Способы назначения обработчиков событий:</h4>
+                <ul>
+                    <li><strong><code>addEventListener</code></strong> — позволяет добавлять несколько обработчиков для одного события. Это более гибкий и современный способ.</li>
+                    <li><strong>Свойства события (например, <code>onclick</code>)</strong> — позволяет назначить только один обработчик для события. Используется реже, так как не поддерживает несколько обработчиков для одного события.</li>
+                    <li><strong>Встраивание в HTML</strong> — например, <code>&lt;button onclick="alert('Hello')"&gt;</code>, но этот способ не рекомендуется, так как снижает читаемость и масштабируемость кода.</li>
+                </ul>
+            
+                <h4>Объект <code>event</code>:</h4>
+                <p>Объект <code>event</code> предоставляет информацию о событии и позволяет управлять его поведением:</p>
+                <ul>
+                    <li><strong><code>preventDefault()</code></strong> — отменяет стандартное поведение события, например, предотвращает отправку формы.</li>
+                    <li><strong><code>stopPropagation()</code></strong> — останавливает всплытие события, предотвращая его передачу на другие элементы.</li>
+                </ul>
+            
+                <h4>Примеры событий:</h4>
+                <ul>
+                    <li>Клик: <code>element.addEventListener('click', function() { alert('Клик!'); });</code></li>
+                    <li>Ввод текста: <code>input.addEventListener('input', function() { console.log('Текст введен!'); });</code></li>
+                    <li>Отправка формы: <code>form.addEventListener('submit', function(event) { event.preventDefault(); console.log('Форма отправлена!'); });</code></li>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать объект event. Обработка событий в JavaScript</div>
+            <div class="answer">
+                <h3>Объект <code>event</code> в JavaScript</h3>
+                <p>Объект <code>event</code> предоставляет информацию о событии, которое произошло. Он включает различные свойства, которые помогают понять контекст события и управлять его поведением.</p>
+            
+                <h4>Основные свойства объекта <code>event</code>:</h4>
+                <ul>
+                    <li><strong><code>event.type</code></strong> — тип события (например, <code>click</code>, <code>keydown</code>).</li>
+                    <li><strong><code>event.target</code></strong> — элемент, на котором произошло событие.</li>
+                    <li><strong><code>event.preventDefault()</code></strong> — отменяет стандартное поведение события (например, отменяет отправку формы).</li>
+                    <li><strong><code>event.stopPropagation()</code></strong> — останавливает всплытие события, предотвращая его распространение на родительские элементы.</li>
+                </ul>
+            
+                <h4>Пример обработки события:</h4>
+                <pre><code>
+            element.addEventListener("click", function(event) {
+                console.log("Событие:", event.type);
+            });
+                </code></pre>
+            
+                <h4>Основные типы событий:</h4>
+                <ul>
+                    <li><strong>Мышь:</strong> <code>click</code>, <code>dblclick</code>, <code>mousemove</code></li>
+                    <li><strong>Клавиатура:</strong> <code>keydown</code>, <code>keyup</code></li>
+                    <li><strong>Формы:</strong> <code>submit</code>, <code>input</code>, <code>change</code></li>
+                    <li><strong>Загрузка:</strong> <code>DOMContentLoaded</code>, <code>beforeunload</code></li>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать обращение к элементам формы из JavaScript</div>
+            <div class="answer">
+                <h3>Работа с формами в JavaScript</h3>
+                <p>Для взаимодействия с формами и их элементами в JavaScript используются различные методы доступа. Вот несколько способов работы с формами и их элементами:</p>
+            
+                <h4>Доступ к форме:</h4>
+                <ul>
+                    <li>Через <code>id</code>: <code>document.getElementById("id")</code></li>
+                    <li>Через имя формы: <code>document.forms["formName"]</code></li>
+                </ul>
+            
+                <h4>Доступ к элементам формы:</h4>
+                <ul>
+                    <li><strong>По <code>id</code>:</strong> <code>document.getElementById("username").value</code></li>
+                    <li><strong>Через <code>elements</code>:</strong> <code>document.forms["myForm"].elements["username"].value</code></li>
+                    <li><strong>Через CSS-селектор:</strong> <code>document.querySelector("#username").value</code></li>
+                </ul>
+            
+                <h4>Обработка событий:</h4>
+                <ul>
+                    <li><code>submit</code>, <code>input</code>, <code>change</code></li>
+                </ul>
+            
+                <h4>Получение значений из элементов формы:</h4>
+                <ul>
+                    <li><strong>Текстовое поле:</strong> <code>document.getElementById("username").value</code></li>
+                    <li><strong>Чекбокс:</strong> <code>document.getElementById("agree").checked</code></li>
+                    <li><strong>Радиокнопка:</strong> <code>document.querySelector('input[name="gender"]:checked').value</code></li>
+                    <li><strong>Список (select):</strong> <code>document.getElementById("country").value</code></li>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать обработку форм на стороне клиента, доступ к данным формы</div>
+            <div class="answer">
+                <h3>Доступ и обработка данных формы</h3>
+            
+                <h4>Доступ к данным:</h4>
+                <ul>
+                    <li><strong>По ID:</strong> <code>document.getElementById("id").value</code></li>
+                    <li><strong>По классу:</strong> <code>document.querySelector(".class").value</code></li>
+                    <li><strong>Через элементы формы:</strong> <code>document.forms["formName"].elements["fieldName"].value</code></li>
+                    <li><strong>Использование FormData:</strong> <code>new FormData(formElement)</code></li>
+                </ul>
+            
+                <h4>Обработка события отправки формы:</h4>
+                <pre>
+                <code>
+                document.getElementById("myForm").addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    let username = document.getElementById("username").value;
+                    console.log("Имя:", username);
+                });
+                </code>
+                </pre>
+            
+                <h4>Валидация данных:</h4>
+                <ul>
+                    <li><strong>Проверка длины имени:</strong> 
+                        <pre>
+                        <code>
+                        if (username.length < 3) {
+                            console.log("Имя слишком короткое!");
+                        }
+                        </code>
+                        </pre>
+                    </li>
+                    <li><strong>Регулярное выражение для email:</strong>
+                        <pre>
+                        <code>
+                        let emailReg = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+                        if (!emailReg.test(email)) {
+                            console.log("Некорректный email!");
+                        }
+                        </code>
+                        </pre>
+                    </li>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать валидацию форм, регулярные выражения в JavaScript</div>
+            <div class="answer">
+                <h3>Валидация форм</h3>
+            
+                <h4>HTML5 валидация:</h4>
+                <ul>
+                    <li><strong>required:</strong> Делает поле обязательным для заполнения.</li>
+                    <li><strong>minlength:</strong> Указывает минимальную длину значения в поле.</li>
+                    <li><strong>type="email":</strong> Проверка, что введенный текст соответствует формату email.</li>
+                </ul>
+            
+                <h4>JavaScript валидация:</h4>
+                <pre>
+                <code>
+                event.preventDefault();  // Отмена стандартной отправки формы, если валидация не прошла
+                </code>
+                </pre>
+            
+                <h4>Использование регулярных выражений (RegExp):</h4>
+                <ul>
+                    <li><strong>Создание регулярного выражения:</strong> 
+                        <pre>
+                        <code>
+                        /шаблон/    // Литералы
+                        new RegExp("шаблон")  // Конструктор
+                        </code>
+                        </pre>
+                    </li>
+                    <li><strong>Методы:</strong>
+                        <ul>
+                            <li><code>regExp.test("строка");</code> - Проверяет, соответствует ли строка регулярному выражению.</li>
+                            <li><code>"строка".match(regExp);</code> - Находит совпадения строки с регулярным выражением.</li>
+                        </ul>
+                    </li>
+                </ul>
+            
+                <h4>Примеры регулярных выражений:</h4>
+                <ul>
+                    <li><strong>Email:</strong>
+                        <pre>
+                        <code>
+                        /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+                        </code>
+                        </pre>
+                    </li>
+                    <li><strong>Телефон:</strong>
+                        <pre>
+                        <code>
+                        /^\+?[0-9\s\-]{7,15}$/;
+                        </code>
+                        </pre>
+                    </li>
+                    <li><strong>Пароль (не менее 8 символов, включая буквы и цифры):</strong>
+                        <pre>
+                        <code>
+                        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                        </code>
+                        </pre>
+                    </li>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Определить promises и fetch в JavaScript</div>
+            <div class="answer">
+                <h3>Асинхронные операции в JavaScript</h3>
+            
+                <h4>Promise:</h4>
+                <p>Promise — это объект для работы с асинхронными операциями. Он имеет три состояния:</p>
+                <ul>
+                    <li><strong>Pending:</strong> Ожидание выполнения.</li>
+                    <li><strong>Fulfilled:</strong> Операция завершена успешно.</li>
+                    <li><strong>Rejected:</strong> Операция завершена с ошибкой.</li>
+                </ul>
+            
+                <h5>Создание Promise:</h5>
+                <pre>
+                <code>
+                let promise = new Promise((resolve, reject) => {
+                    resolve("Успех"); // Успешное выполнение
+                    // reject("Ошибка"); // Ошибка выполнения
+                });
+                </code>
+                </pre>
+            
+                <h5>Обработка Promise:</h5>
+                <pre>
+                <code>
+                promise
+                    .then(result => console.log(result)) // Обрабатываем успешный результат
+                    .catch(error => console.log(error))  // Обрабатываем ошибку
+                    .finally(() => console.log("Завершение")); // Выполняется всегда
+                </code>
+                </pre>
+            
+                <h4>Fetch API:</h4>
+                <p>Fetch API — это метод для отправки HTTP-запросов. Возвращает Promise.</p>
+                
+                <h5>Пример использования Fetch:</h5>
+                <pre>
+                <code>
+                fetch("https://jsonplaceholder.typicode.com/todos/1")
+                    .then(response => response.json()) // Преобразуем ответ в JSON
+                    .then(data => console.log(data))    // Обрабатываем данные
+                    .catch(error => console.log(error)); // Обрабатываем ошибки
+                </code>
+                </pre>
+            
+                <h4>Async/Await:</h4>
+                <p>Async/await — это синтаксический сахар для работы с асинхронными функциями, улучшает читаемость.</p>
+            
+                <h5>Пример использования Async/Await:</h5>
+                <pre>
+                <code>
+                async function getData() {
+                    try {
+                        let response = await fetch("url"); // Ждем ответа от сервера
+                        let data = await response.json();  // Ждем преобразования в JSON
+                        console.log(data);                  // Выводим данные
+                    } catch (error) {
+                        console.log(error.message);         // Обрабатываем ошибки
+                    }
+                }
+                </code>
+                </pre>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать обработку ошибок в JavaScript</div>
+            <div class="answer">
+                <h3>Обработка ошибок в JavaScript</h3>
+            
+                <h4>try...catch</h4>
+                <p>Механизм для обработки ошибок в JavaScript. Блок <strong>try</strong> выполняет код, а блок <strong>catch</strong> ловит ошибки, если они возникли.</p>
+            
+                <h5>Пример использования try...catch:</h5>
+                <pre>
+                <code>
+                try {
+                    // Код, который может вызвать ошибку
+                    let x = y; // Ошибка, так как переменная y не определена
+                } catch (e) {
+                    // Обработка ошибки
+                    console.log(e.message); // Выводим сообщение об ошибке
+                }
+                </code>
+                </pre>
+            
+                <h4>finally</h4>
+                <p>Блок <strong>finally</strong> всегда выполняется, независимо от того, была ли ошибка или нет.</p>
+            
+                <h5>Пример с finally:</h5>
+                <pre>
+                <code>
+                try {
+                    // Код, который может вызвать ошибку
+                    let x = y; // Ошибка, так как переменная y не определена
+                } finally {
+                    // Код, который выполняется всегда
+                    console.log("Всегда выполняется"); // Это сообщение будет выведено, даже если была ошибка
+                }
+                </code>
+                </pre>
+            
+                <h4>Создание и выброс ошибки с throw</h4>
+                <p>Для создания и выброса ошибок используется <strong>throw</strong> с объектом <code>new Error()</code>.</p>
+            
+                <h5>Пример с throw:</h5>
+                <pre>
+                <code>
+                function проверитьВозраст(возраст) {
+                    if (возраст < 18) {
+                        throw new Error("Вам нет 18 лет!"); // Генерация ошибки, если возраст меньше 18
+                    }
+                    return "Доступ разрешён";
+                }
+            
+                // Пример вызова
+                try {
+                    console.log(проверитьВозраст(16)); // Возраст 16 лет
+                } catch (e) {
+                    console.log(e.message); // Вывод сообщения ошибки: "Вам нет 18 лет!"
+                }
+                </code>
+                </pre>
+            
+                <h4>Обработка ошибок в async/await</h4>
+                <p>Ошибки в асинхронных функциях обрабатываются с использованием try...catch внутри async функции.</p>
+            
+                <h5>Пример с async/await:</h5>
+                <pre>
+                <code>
+                async function f() {
+                    try {
+                        let response = await fetch("url"); // Ожидание ответа от сервера
+                        let data = await response.json();  // Преобразование ответа в JSON
+                    } catch (e) {
+                        console.log(e); // Обработка ошибок, если fetch или .json() вызвали исключение
+                    }
+                }
+                </code>
+                </pre>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Определить асинхронные функции, формат JSON</div>
+            <div class="answer">
+                <h3>Асинхронные функции и JSON в JavaScript</h3>
+            
+                <h4>Асинхронные функции</h4>
+                <p>Асинхронные функции объявляются с помощью ключевого слова <code>async</code> и позволяют использовать <code>await</code> для ожидания результата выполнения асинхронных операций.</p>
+            
+                <h5>Пример асинхронной функции:</h5>
+                <pre>
+                <code>
+                async function getData() {
+                    // Ожидаем получения данных от fetch
+                    let response = await fetch("url");  // Отправляем запрос на сервер
+                    let data = await response.json();   // Преобразуем ответ в формат JSON
+                    console.log(data);  // Выводим полученные данные
+                }
+                </code>
+                </pre>
+            
+                <h4>JSON (JavaScript Object Notation)</h4>
+                <p>JSON — это текстовый формат для хранения и передачи данных, который является независимым от языка программирования. Он представляет собой строку, которую легко преобразовать в объект JavaScript.</p>
+            
+                <h5>Пример структуры JSON:</h5>
+                <pre>
+                <code>
+                {
+                    "имя": "Алиса",
+                    "возраст": 25
+                }
+                </code>
+                </pre>
+            
+                <h5>Преобразование JSON в объект и наоборот:</h5>
+                <pre>
+                <code>
+                // Преобразование JSON строки в объект
+                let jsonString = '{"имя": "Алиса", "возраст": 25}';
+                let obj = JSON.parse(jsonString);
+                console.log(obj);  // Выводит: { имя: "Алиса", возраст: 25 }
+            
+                // Преобразование объекта в JSON строку
+                let jsonStringified = JSON.stringify(obj);
+                console.log(jsonStringified);  // Выводит: '{"имя":"Алиса","возраст":25}'
+                </code>
+                </pre>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Определить Web-сервер, настройка и запуск. Описать PHP синтаксис и типы данных</div>
+            <div class="answer">
+                <h3>Основы синтаксиса PHP</h3>
+            
+                <h4>Синтаксис PHP</h4>
+                <p>PHP код начинается с тега <code>&lt;?php</code> и заканчивается на <code>?&gt;</code>. Инструкции заканчиваются точкой с запятой (<code>;</code>). Переменные начинаются с символа <code>$</code> и могут содержать буквы, цифры и подчеркивания (но не начинаться с цифры).</p>
+            
+                <h5>Пример кода PHP:</h5>
+                <pre>
+                <code>
+                &lt;?php
+                $name = "Алиса";  // Переменная строка
+                echo $name;       // Выводит имя
+                ?&gt;
+                </code>
+                </pre>
+            
+                <h4>Типы данных в PHP</h4>
+                <p>PHP поддерживает несколько типов данных:</p>
+                <ul>
+                    <li><strong>Строки</strong> (string): Пример — <code>"Hello"</code></li>
+                    <li><strong>Целые числа</strong> (int): Пример — <code>42</code></li>
+                    <li><strong>Дробные числа</strong> (float): Пример — <code>3.14</code></li>
+                    <li><strong>Логический тип</strong> (bool): Пример — <code>true</code>, <code>false</code></li>
+                    <li><strong>Массивы</strong> (array): Пример — <code>["яблоко", "банан"]</code></li>
+                    <li><strong>NULL</strong> (null): Пример — <code>null</code></li>
+                    <li><strong>Объекты</strong> (object)</li>
+                    <li><strong>Ресурсы</strong> (resource)</li>
+                </ul>
+            
+                <h5>Пример работы с переменной:</h5>
+                <pre>
+                <code>
+                &lt;?php
+                $number = 42;  // Целое число
+                $fruit = "яблоко";  // Строка
+                echo $number;  // Выводит 42
+                echo $fruit;   // Выводит яблоко
+                ?&gt;
+                </code>
+                </pre>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Описать работу с массивами в PHP</div>
+            <div class="answer">
+                <h3>Массивы в PHP</h3>
+            
+                <h4>Виды массивов</h4>
+                <ul>
+                    <li><strong>Индексные массивы</strong> — элементы хранятся под числовыми индексами.</li>
+                    <pre>
+                    <code>
+                    $fruits = ["яблоко", "банан", "груша"];
+                    echo $fruits[0]; // яблоко
+                    </code>
+                    </pre>
+            
+                    <li><strong>Ассоциативные массивы</strong> — используются строковые ключи.</li>
+                    <pre>
+                    <code>
+                    $person = ["имя" => "Алиса", "возраст" => 25];
+                    echo $person["имя"]; // Алиса
+                    </code>
+                    </pre>
+            
+                    <li><strong>Многомерные массивы</strong> — массивы внутри массива.</li>
+                    <pre>
+                    <code>
+                    $users = [
+                        ["имя" => "Алиса", "возраст" => 25],
+                        ["имя" => "Боб", "возраст" => 30]
+                    ];
+                    echo $users[1]["имя"]; // Боб
+                    </code>
+                    </pre>
+                </ul>
+            
+                <h4>Операции с массивами</h4>
+                <ul>
+                    <li><strong>Добавление элемента</strong>:</li>
+                    <pre>
+                    <code>
+                    $fruits[] = "апельсин"; 
+                    array_push($fruits, "манго");
+                    </code>
+                    </pre>
+            
+                    <li><strong>Удаление элемента</strong>:</li>
+                    <pre>
+                    <code>
+                    unset($fruits[1]); // Удалит элемент с индексом 1
+                    </code>
+                    </pre>
+            
+                    <li><strong>Количество элементов</strong>:</li>
+                    <pre>
+                    <code>
+                    echo count($fruits); // Выводит число элементов в массиве
+                    </code>
+                    </pre>
+            
+                    <li><strong>Поиск элемента</strong>:</li>
+                    <pre>
+                    <code>
+                    if (in_array("банан", $fruits)) {
+                        echo "Банан найден!";
+                    }
+                    </code>
+                    </pre>
+            
+                    <li><strong>Перебор массива</strong>:</li>
+                    <pre>
+                    <code>
+                    foreach ($fruits as $fruit) {
+                        echo $fruit . " ";
+                    }
+                    </code>
+                    </pre>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать работу со строками в PHP</div>
+            <div class="answer">
+                <h3>Работа со строками в PHP</h3>
+            
+                <h4>Создание строк</h4>
+                <ul>
+                    <li><strong>Одинарные кавычки (' ')</strong> — без подстановки переменных.</li>
+                    <pre><code>
+                    $text = 'Привет, $name!'; // Выведет: Привет, $name!
+                    </code></pre>
+            
+                    <li><strong>Двойные кавычки (" ")</strong> — с подстановкой переменных.</li>
+                    <pre><code>
+                    $name = "Алиса";
+                    $text = "Привет, $name!"; // Выведет: Привет, Алиса!
+                    </code></pre>
+                </ul>
+            
+                <h4>Операции со строками</h4>
+                <ul>
+                    <li><strong>Склеивание строк</strong> (конкатенация):</li>
+                    <pre><code>
+                    $str1 = "Привет";
+                    $str2 = "мир!";
+                    $result = $str1 . " " . $str2; // "Привет мир!"
+                    </code></pre>
+            
+                    <li><strong>Длина строки</strong>:</li>
+                    <pre><code>
+                    echo strlen("Hello"); // 5
+                    </code></pre>
+            
+                    <li><strong>Подсчет слов в строке</strong>:</li>
+                    <pre><code>
+                    echo str_word_count("Hello world!"); // 2
+                    </code></pre>
+            
+                    <li><strong>Поиск подстроки</strong>:</li>
+                    <pre><code>
+                    echo strpos("Привет, мир!", "мир"); // 8 (позиция)
+                    </code></pre>
+            
+                    <li><strong>Замена в строке</strong>:</li>
+                    <pre><code>
+                    echo str_replace("мир", "вселенная", "Привет, мир!"); // "Привет, вселенная!"
+                    </code></pre>
+            
+                    <li><strong>Удаление пробелов</strong>:</li>
+                    <pre><code>
+                    echo trim("  Привет  "); // "Привет"
+                    </code></pre>
+            
+                    <li><strong>Изменение регистра</strong>:</li>
+                    <pre><code>
+                    echo strtoupper("hello"); // "HELLO"
+                    echo strtolower("HELLO"); // "hello"
+                    </code></pre>
+            
+                    <li><strong>Разбиение строки в массив</strong>:</li>
+                    <pre><code>
+                    $words = explode(" ", "Привет мир");
+                    print_r($words); // ["Привет", "мир"]
+                    </code></pre>
+            
+                    <li><strong>Объединение массива в строку</strong>:</li>
+                    <pre><code>
+                    $array = ["яблоко", "банан", "груша"];
+                    echo implode(", ", $array); // "яблоко, банан, груша"
+                    </code></pre>
+                </ul>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать работу с файлами и каталогами в PHP</div>
+            <div class="answer">
+                <h3>Работа с файлами и каталогами в PHP</h3>
+            
+                <h4>Открытие файла</h4>
+                <pre><code>
+                $file = fopen("file.txt", "r"); // Открытие в режиме чтения
+                </code></pre>
+            
+                <h4>Чтение файла</h4>
+                <ul>
+                    <li><strong>Построчное чтение:</strong></li>
+                    <pre><code>
+                    $file = fopen("file.txt", "r");
+                    while (!feof($file)) {
+                        echo fgets($file); // Читает файл строка за строкой
+                    }
+                    fclose($file);
+                    </code></pre>
+            
+                    <li><strong>Чтение всего содержимого файла:</strong></li>
+                    <pre><code>
+                    $content = file_get_contents("file.txt");
+                    echo $content;
+                    </code></pre>
+                </ul>
+            
+                <h4>Запись в файл</h4>
+                <ul>
+                    <li><strong>Добавление текста в файл:</strong></li>
+                    <pre><code>
+                    $file = fopen("file.txt", "a"); // "a" - добавление
+                    fwrite($file, "Новый текст\n");
+                    fclose($file);
+                    </code></pre>
+            
+                    <li><strong>Перезапись файла:</strong></li>
+                    <pre><code>
+                    file_put_contents("file.txt", "Перезаписанный текст");
+                    </code></pre>
+                </ul>
+            
+                <h4>Закрытие файла</h4>
+                <pre><code>
+                fclose($file);
+                </code></pre>
+            
+                <h4>Удаление файла</h4>
+                <pre><code>
+                unlink("file.txt"); // Удаляет файл
+                </code></pre>
+            
+                <h3>Работа с каталогами</h3>
+            
+                <h4>Создание папки</h4>
+                <pre><code>
+                mkdir("новая_папка");
+                </code></pre>
+            
+                <h4>Удаление папки</h4>
+                <pre><code>
+                rmdir("новая_папка"); // Удаляет пустую папку
+                </code></pre>
+            
+                <h4>Просмотр содержимого папки</h4>
+                <pre><code>
+                $files = scandir("папка");
+                print_r($files); // Выведет массив с именами файлов и папок
+                </code></pre>
+            
+                <h4>Проверка существования файла или папки</h4>
+                <pre><code>
+                if (file_exists("file.txt")) {
+                    echo "Файл существует";
+                }
+                </code></pre>
+            </div>
+               </div>
+        <div class="qa-item">
+            <div class="question">Описать процесс обработки ошибок в PHP</div>
+            <div class="answer">
+                <h3>Типы ошибок в PHP</h3>
+                <ul>
+                    <li><strong>Notice</strong> – небольшие ошибки, не прерывают выполнение скрипта.</li>
+                    <li><strong>Warning</strong> – код продолжает выполняться, но есть проблемы.</li>
+                    <li><strong>Fatal error</strong> – критическая ошибка, выполнение скрипта прекращается.</li>
+                    <li><strong>Exceptions</strong> – можно перехватить и обработать.</li>
+                </ul>
+            
+                <h3>Настройка вывода ошибок</h3>
+                <pre><code>
+                error_reporting(E_ALL); // Включает вывод всех ошибок
+                ini_set('display_errors', 1); // Показывает ошибки на экране
+                ini_set('log_errors', 1);
+                ini_set('error_log', 'errors.log'); // Логирование ошибок в файл
+                </code></pre>
+            
+                <h3>Обработка исключений</h3>
+                <pre><code>
+                try {
+                    if (!file_exists("somefile.txt")) {
+                        throw new Exception("Файл не найден!");
+                    }
+                } catch (Exception $e) {
+                    echo "Ошибка: " . $e->getMessage();
+                }
+                </code></pre>
+            
+                <h3>Создание пользовательского обработчика ошибок</h3>
+                <pre><code>
+                function customErrorHandler($errno, $errstr, $errfile, $errline) {
+                    echo "Ошибка [$errno]: $errstr в файле $errfile на строке $errline";
+                    return true; // Прекращает выполнение стандартного обработчика ошибок
+                }
+            
+                set_error_handler("customErrorHandler");
+            
+                echo $undefinedVar; // Вызовет ошибку Notice, обработанную customErrorHandler
+                </code></pre>
+            
+                <h3>Генерация ошибок с throw</h3>
+                <pre><code>
+                function checkAge($age) {
+                    if ($age < 18) {
+                        throw new Exception("Возраст должен быть 18+");
+                    }
+                    return "Доступ разрешен";
+                }
+            
+                try {
+                    echo checkAge(16);
+                } catch (Exception $e) {
+                    echo "Ошибка: " . $e->getMessage();
+                }
+                </code></pre>
+            
+                <h3>Регистрация обработчика завершения скрипта</h3>
+                <pre><code>
+                register_shutdown_function(function() {
+                    $error = error_get_last();
+                    if ($error && $error['type'] === E_ERROR) {
+                        echo "Критическая ошибка: {$error['message']}";
+                    }
+                });
+                </code></pre>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать работу со временем в PHP</div>
+            <div class="answer">
+                <h3>Работа с датами в PHP</h3>
+            
+                <h4>Получение текущей даты и времени</h4>
+                <pre><code>
+                echo date("Y-m-d H:i:s"); // Формат: 2025-03-12 14:30:00
+                </code></pre>
+            
+                <h4>Настройка часового пояса</h4>
+                <pre><code>
+                date_default_timezone_set("Europe/Moscow");
+                echo date("Y-m-d H:i:s"); // Вывод с учетом установленного часового пояса
+                </code></pre>
+            
+                <h4>Timestamp (метка времени Unix)</h4>
+                <pre><code>
+                echo time(); // Выведет текущее количество секунд с 1 января 1970 года
+                </code></pre>
+            
+                <h4>Форматирование заданной даты</h4>
+                <pre><code>
+                echo date("Y-m-d H:i:s", 1710151800); // Преобразование timestamp в дату
+                </code></pre>
+            
+                <h4>Добавление и вычитание дат</h4>
+                <pre><code>
+                echo date("Y-m-d", strtotime("+1 week")); // Дата через неделю
+                echo date("Y-m-d", strtotime("-3 days")); // Дата три дня назад
+                </code></pre>
+            
+                <h4>Разница между датами</h4>
+                <pre><code>
+                $дата1 = new DateTime("2025-01-01");
+                $дата2 = new DateTime("2025-03-11");
+                $разница = $дата1->diff($дата2);
+                echo $разница->days . " дней"; // Выведет количество дней между датами
+                </code></pre>
+            
+                <h4>Использование объекта DateTime</h4>
+                <pre><code>
+                $дата = new DateTime("now");
+                $дата->modify("+2 days");
+                echo $дата->format("Y-m-d H:i:s");
+                </code></pre>
+            
+                <h4>Форматирование дат с DateTime</h4>
+                <pre><code>
+                $дата = new DateTime("2025-03-12 14:30:00");
+                echo $дата->format("d.m.Y H:i"); // 12.03.2025 14:30
+                </code></pre>
+            </div>
+              </div>
+        <div class="qa-item">
+            <div class="question">Описать работу с cookie в PHP, создание и использование</div>
+            <div class="answer">
+                <h3>Работа с Cookie в PHP</h3>
+            
+                <h4>Создание Cookie</h4>
+                <p>Устанавливаем cookie с временем жизни 1 час:</p>
+                <pre><code>
+                setcookie("user", "Alex", time() + 3600); // Хранится 1 час
+                </code></pre>
+            
+                <h4>Чтение Cookie</h4>
+                <p>Получаем значение Cookie в PHP:</p>
+                <pre><code>
+                if (isset($_COOKIE["user"])) {
+                    echo "Привет, " . $_COOKIE["user"];
+                } else {
+                    echo "Куки не установлены.";
+                }
+                </code></pre>
+            
+                <h4>Удаление Cookie</h4>
+                <p>Удаляем cookie, установив время истечения в прошлом:</p>
+                <pre><code>
+                setcookie("user", "", time() - 3600);
+                </code></pre>
+            
+                <h4>Безопасные Cookie</h4>
+                <p>Настройки для защиты от XSS и передачи только по HTTPS:</p>
+                <pre><code>
+                setcookie("secureUser", "Alex", time() + 3600, "/", "", true, true);
+                </code></pre>
+                <ul>
+                    <li><strong>Параметр 4 ("/")</strong> — доступен на всем сайте.</li>
+                    <li><strong>Параметр 5 ("")</strong> — указывает домен (по умолчанию текущий).</li>
+                    <li><strong>Параметр 6 (true)</strong> — требует HTTPS.</li>
+                    <li><strong>Параметр 7 (true)</strong> — делает cookie доступным только через HTTP (защита от XSS).</li>
+                </ul>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Описать работу с сессиями</div>
+            <div class="answer">
+                <h3>Работа с сессиями в PHP</h3>
+            
+                <h4>Начало сессии</h4>
+                <p>Перед использованием сессий необходимо запустить их с помощью <code>session_start()</code>:</p>
+                <pre><code>
+                session_start();
+                </code></pre>
+            
+                <h4>Запись данных в сессию</h4>
+                <p>Сохраняем данные в сессии:</p>
+                <pre><code>
+                $_SESSION["user"] = "Алиса";
+                </code></pre>
+            
+                <h4>Чтение данных из сессии</h4>
+                <p>Получаем сохраненные данные:</p>
+                <pre><code>
+                echo $_SESSION["user"]; // Выведет: Алиса
+                </code></pre>
+            
+                <h4>Удаление данных из сессии</h4>
+                <p>Удаляем конкретную переменную:</p>
+                <pre><code>
+                unset($_SESSION["user"]);
+                </code></pre>
+            
+                <h4>Очистка всех данных сессии</h4>
+                <p>Удаляет все переменные сессии:</p>
+                <pre><code>
+                session_unset();
+                </code></pre>
+            
+                <h4>Закрытие сессии</h4>
+                <p>Удаляет все данные и завершает сессию:</p>
+                <pre><code>
+                session_destroy();
+                </code></pre>
+            
+                <h4>Пример использования сессии</h4>
+                <pre><code>
+                session_start();
+                
+                if (!isset($_SESSION["user"])) {
+                    $_SESSION["user"] = "Алиса";
+                    echo "Вы вошли как " . $_SESSION["user"];
+                } else {
+                    echo "С возвращением, " . $_SESSION["user"];
+                }
+                </code></pre>
+            </div>
+             </div>
+        <div class="qa-item">
+            <div class="question">Определить протокол oAuth</div>
+            <div class="answer">[Ответ отсутствует в документе]</div>
+        </div>
+        <div class="qa-item">
+            <div class="question">Описать принцип работы с почтовыми сервисами</div>
+            <div class="answer">[Ответ отсутствует в документе]</div>
+        </div>
+        <div class="qa-item">
+            <div class="question">Описать работу с БД в PHP, подключение и конфигурирование</div>
+            <div class="answer">[Ответ отсутствует в документе]</div>
+        </div>
+        <div class="qa-item">
+            <div class="question">Описать обработку ошибок подключения к БД, выполнение запросов</div>
+            <div class="answer">[Ответ отсутствует в документе]</div>
+        </div>
+        <div class="qa-item">
+            <div class="question">Практика пример кода</div>
+            <div class="answer">
+                <h3>Управление самолетом</h3>
+                
+                <h4>HTML-код</h4>
+                <pre><code>&lt;!DOCTYPE html&gt;
+            &lt;html lang="en"&gt;
+            &lt;head&gt;
+              &lt;meta charset="UTF-8"&gt;
+              &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+              &lt;title&gt;Транс&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;h1&gt;Управление самолетом&lt;/h1&gt;
+                &lt;script src="1.js"&gt;&lt;/script&gt;
+                &lt;form id="planeForm"&gt;
+                  &lt;label&gt;Марка: 
+                    &lt;input type="text" id="brand" name="brand"&gt;
+                  &lt;/label&gt;&lt;br&gt;
+                  &lt;label&gt;Вместительность (пассажиров): 
+                    &lt;input type="number" id="capacity" name="capacity"&gt;
+                  &lt;/label&gt;&lt;br&gt;
+                  &lt;label&gt;Мощность (л.с.): 
+                    &lt;input type="number" id="power" name="power"&gt;
+                  &lt;/label&gt;&lt;br&gt;
+                  &lt;label&gt;Скорость (км/ч): 
+                    &lt;input type="number" id="speed" name="speed"&gt;
+                  &lt;/label&gt;&lt;br&gt;
+                  &lt;label&gt;Количество двигателей: 
+                    &lt;input type="number" id="engines" name="engines"&gt;
+                  &lt;/label&gt;&lt;br&gt;
+                  &lt;label&gt;Высота полёта (м): 
+                    &lt;input type="number" id="flightAltitude" name="flightAltitude"&gt;
+                  &lt;/label&gt;&lt;br&gt;
+                  &lt;button type="button" onclick="savePlane()"&gt;Сохранить&lt;/button&gt;
+                &lt;/form&gt;
+                &lt;div id="output"&gt;&lt;/div&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;
+                </code></pre>
+            
+                <h4>JavaScript-код</h4>
+                <pre><code>
+            class Transport {
+                #brand;
+                #capacity;
+                #power;
+                #speed;
+                
+                constructor() {
+                    this.#brand = "бам бам бим бим";
+                    this.#capacity = 0;
+                    this.#power = 0;
+                    this.#speed = 0;
+                }
+                
+                setProperties(brand, capacity, power, speed) {
+                    this.#brand = brand;
+                    this.#capacity = capacity;
+                    this.#power = power;
+                    this.#speed = speed;
+                }
+                
+                displayProperties() {
+                    return `Марка: ${this.#brand}&lt;br&gt;Вместительность: ${this.#capacity} пассажиров&lt;br&gt;Мощность: ${this.#power} л.с.&lt;br&gt;Скорость: ${this.#speed} км/ч`;
+                }
+            }
+            
+            class Airplane extends Transport {
+                #engines;
+                #flightAltitude;
+                
+                constructor(brand = "Unknown", capacity = 0, power = 0, speed = 0, engines = 1, flightAltitude = 0) {
+                    super();
+                    this.setProperties(brand, capacity, power, speed);
+                    this.#engines = engines;
+                    this.#flightAltitude = flightAltitude;
+                }
+                
+                displayProperties() {
+                    return `${super.displayProperties()}&lt;br&gt;Количество двигателей: ${this.#engines}&lt;br&gt;Высота полёта: ${this.#flightAltitude} м`;
+                }
+            }
+            
+            function savePlane() {
+                // Берём значения из формы
+                const brand = document.getElementById("brand").value;
+                const capacity = parseInt(document.getElementById("capacity").value);
+                const power = parseInt(document.getElementById("power").value);
+                const speed = parseInt(document.getElementById("speed").value);
+                const engines = parseInt(document.getElementById("engines").value);
+                const flightAltitude = parseInt(document.getElementById("flightAltitude").value);
+            
+                const plane = new Airplane(brand, capacity, power, speed, engines, flightAltitude);
+                document.getElementById("output").innerHTML = plane.displayProperties();
+            }
+                </code></pre>
+            </div>
+            
+        </div>
+        <div class="modal" id="modal" style="display: none;">
+            <div class="modal-content" id="modalContent">
+                <button class="modal-close" id="modalClose">Закрыть</button>
+                <div id="modalAnswer"></div> <!-- Место для ответа -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // Перетаскивание блока
+        const qaContainer = document.getElementById('qaContainer');
+        const qaHeader = document.getElementById('qaHeader');
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+    
+        qaHeader.addEventListener('mousedown', startDragging);
+    
+        function startDragging(e) {
+            initialX = e.clientX - currentX;
+            initialY = e.clientY - currentY;
+            isDragging = true;
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', stopDragging);
+        }
+    
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                qaContainer.style.left = `${currentX}px`;
+                qaContainer.style.top = `${currentY}px`;
+                qaContainer.style.bottom = 'auto';
+            }
+        }
+    
+        function stopDragging() {
+            isDragging = false;
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('mouseup', stopDragging);
+        }
+    
+        // Инициализация позиции
+        currentX = qaContainer.offsetLeft;
+        currentY = window.innerHeight - qaContainer.offsetHeight - 20;
+        qaContainer.style.top = `${currentY}px`;
+        qaContainer.style.bottom = '20px';
+    
+        // Логика вопросов и модального окна
+        const questions = document.querySelectorAll('.question');
+        const qaItems = document.querySelectorAll('.qa-item');
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modalContent');
+        const modalAnswer = document.getElementById('modalAnswer');
+        const modalClose = document.getElementById('modalClose');
+    
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                // Скрываем список вопросов
+                qaItems.forEach(item => {
+                    item.style.display = 'none';
+                });
+    
+                // Получаем ответ и вставляем его в модальное окно
+                const answer = question.nextElementSibling;
+                if (answer) {
+                    modalAnswer.innerHTML = answer.innerHTML; // Копируем содержимое ответа
+                    modal.style.display = 'block'; // Показываем модальное окно
+                }
+            });
+        });
+    
+        // Закрытие модального окна
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none'; // Скрываем модальное окно
+            modalAnswer.innerHTML = ''; // Очищаем содержимое
+            qaItems.forEach(item => {
+                item.style.display = 'block'; // Возвращаем вопросы
+                item.querySelector('.answer').style.display = 'none'; // Убеждаемся, что ответы скрыты
+            });
+        });
+    
+        // Поиск
+        const searchInput = document.getElementById('searchInput');
+    
+        searchInput.addEventListener('input', () => {
+            const searchText = searchInput.value.toLowerCase();
+            qaItems.forEach(item => {
+                const questionText = item.querySelector('.question').textContent.toLowerCase();
+                if (item.style.display !== 'none') {
+                    item.style.display = questionText.includes(searchText) ? 'block' : 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
